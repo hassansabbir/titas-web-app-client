@@ -1,7 +1,9 @@
 function App() {
   return (
     <>
-      <h1>Welcome to Titas Gas Adarsha High School</h1>
+      <h1 className="text-4xl font-bold">
+        Welcome to Titas Gas Adarsha High School
+      </h1>
     </>
   );
 }
