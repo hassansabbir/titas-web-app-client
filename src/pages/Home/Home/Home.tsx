@@ -1,7 +1,9 @@
+import GreetingsSection from "./GreetingsSection/GreetingsSection";
+
 const Home = () => {
   return (
     <div>
-      <h1>This is Home component.</h1>
+      <GreetingsSection />
     </div>
   );
 };
