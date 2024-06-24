@@ -1,12 +1,13 @@
-import { Button } from "antd";
+import { Outlet } from "react-router-dom";
+import Navbar from "../shared/Navbar";
+import Footer from "../shared/Footer";
 
 const MainLayout = () => {
   return (
     <>
-      <h1 className="text-4xl font-bold">
-        Welcome to Titas Gas Adarsha High School
-      </h1>
-      <Button type="primary">Primary Button</Button>
+      <Navbar></Navbar>
+      <Outlet></Outlet>
+      <Footer></Footer>
     </>
   );
 };
