@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div>
+    <div className="mt-full">
       <h1>This is Footer component.</h1>
     </div>
   );
