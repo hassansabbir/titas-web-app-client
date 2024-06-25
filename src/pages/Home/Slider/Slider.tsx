@@ -24,7 +24,7 @@ const Slider = () => {
               <br /> Titas Gas Adarsha High School!
             </h1>
             <p className="text-2xl">Where Excellence Meets Education.</p>
-            <Button type="dashed">Read More</Button>
+            <Button size="large">Read More</Button>
           </div>
 
           <img src={imageOne} alt="" className="w-full h-full object-cover" />
