@@ -1,13 +1,14 @@
 import Slider from "../Slider/Slider";
-
-import GreetingsSection from "../GreetingsSection/GreetingsSection";
 import TabDescription from "../TabDescription/TabDescription";
+import GreetingsSection from "../GreetingsSection/GreetingsSection";
+import SubscriptionBox from "../SubscriptionBox/SubscriptionBox";
 
 const Home = () => {
   return (
     <div>
       <Slider></Slider>
       <GreetingsSection />
+      <SubscriptionBox></SubscriptionBox>
       <TabDescription />
     </div>
   );
