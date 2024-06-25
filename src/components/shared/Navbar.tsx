@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { Drawer } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -15,17 +16,21 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="flex fixed w-full z-10 justify-between p-7 px-12 bg-opacity-50 bg-black text-white ">
+      <div className="flex fixed w-full z-10 justify-between p-7 px-12  bg-white text-black  ">
         <div>
-          <h1 className="text-3xl font-displayTwo font-medium ">T I T A S</h1>
+          <h1 className="text-3xl font-displayTwo font-bold ">T I T A S</h1>
         </div>
         {/* With bigger screen */}
         <div>
           <ul className="lg:flex gap-6 font-displayTwo font-semibold hidden ">
-            <li>Home</li>
+            <li>
+              <Link to={"/"}>Home</Link>
+            </li>
             <li>Pages</li>
             <li>Events</li>
-            <li>Blog</li>
+            <li>
+              <Link to={"/blog"}>Blog</Link>
+            </li>
           </ul>
         </div>
         {/* Hamburger for smaller devices */}

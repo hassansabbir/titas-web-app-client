@@ -9,6 +9,7 @@ import imageFour from "../../../assets/SliderImages/imageFour.jpg";
 
 import { Navigation } from "swiper/modules";
 import { Button } from "antd";
+import SimpleParallax from "simple-parallax-js";
 const Slider = () => {
   return (
     <>
@@ -40,7 +41,9 @@ const Slider = () => {
             </p>
           </div>
 
-          <img src={imageTwo} alt="" className="w-full h-full object-cover" />
+          <SimpleParallax>
+            <img src={imageTwo} alt="" className="w-full h-full object-cover" />
+          </SimpleParallax>
         </SwiperSlide>
         <SwiperSlide className="relative">
           <div className="absolute inset-0 flex-col text-center flex items-center justify-center  bg-black bg-opacity-40  text-white text-4xl md:text-6xl font-bold">
@@ -53,7 +56,13 @@ const Slider = () => {
             </p>
           </div>
 
-          <img src={imageThree} alt="" className="w-full h-full object-cover" />
+          <SimpleParallax>
+            <img
+              src={imageThree}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </SimpleParallax>
         </SwiperSlide>
         <SwiperSlide className="relative">
           <div className="absolute inset-0 flex-col text-center flex items-center justify-center  bg-black bg-opacity-40  text-white text-4xl md:text-6xl font-bold">
@@ -66,7 +75,13 @@ const Slider = () => {
             </p>
           </div>
 
-          <img src={imageFour} alt="" className="w-full h-full object-cover" />
+          <SimpleParallax>
+            <img
+              src={imageFour}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </SimpleParallax>
         </SwiperSlide>
       </Swiper>
     </>
