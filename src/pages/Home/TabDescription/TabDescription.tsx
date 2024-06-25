@@ -4,13 +4,17 @@ import tabIMG from "../../../assets/randomImg1.png";
 
 const TabDescription = () => {
   const onChange = (key: string) => {
-    console.log(key);
+    key;
   };
 
   const items = [
     {
       key: "1",
-      label: <span className="text-2xl border px-10">Description</span>,
+      label: (
+        <span className="md:text-2xl md:border md:py-2 rounded-2xl shadow-2xl md:px-10">
+          Description
+        </span>
+      ),
       children: (
         <div className="mt-10">
           <p>
@@ -19,7 +23,7 @@ const TabDescription = () => {
             academic excellence and personal growth prepares students for
             success in a rapidly changing world.
           </p>
-          <Button className="py-5" type="primary">
+          <Button className="py-5 my-5" type="primary">
             Learn More
           </Button>
         </div>
@@ -27,7 +31,11 @@ const TabDescription = () => {
     },
     {
       key: "2",
-      label: <span className="text-2xl border px-10">Syllabus</span>,
+      label: (
+        <span className="md:text-2xl md:border md:py-2 rounded-2xl shadow-2xl md:px-10">
+          Syllabus
+        </span>
+      ),
       children: (
         <div className="mt-10">
           <p>
@@ -37,7 +45,7 @@ const TabDescription = () => {
             subjects, it ensures a balanced and well-rounded education that
             meets national standards and encourages intellectual curiosity.
           </p>
-          <Button className="py-5" type="primary">
+          <Button className="py-5 my-5" type="primary">
             Learn More
           </Button>
         </div>
@@ -45,7 +53,11 @@ const TabDescription = () => {
     },
     {
       key: "3",
-      label: <span className="text-2xl border px-10">Teachers</span>,
+      label: (
+        <span className="md:text-2xl md:border md:py-2 rounded-2xl shadow-2xl md:px-10">
+          Teachers
+        </span>
+      ),
       children: (
         <div className="mt-10">
           <p>
@@ -55,7 +67,7 @@ const TabDescription = () => {
             ensuring each student receives the support and guidance they need to
             thrive
           </p>
-          <Button className="py-5" type="primary">
+          <Button className="py-5 my-5" type="primary">
             Learn More
           </Button>
         </div>
@@ -64,16 +76,16 @@ const TabDescription = () => {
   ];
 
   return (
-    <div className="bg-gray-100 px-10 py-28 mt-10 h-[700px]">
+    <div className="bg-gray-100 px-10 md:py-28 py-10 mt-10 md:h-[660px]">
       <Container>
         <div className="md:flex gap-10">
           <Tabs
-            className="text-xl w-1/2"
+            className="text-xl md:w-1/2"
             defaultActiveKey="1"
             items={items}
             onChange={onChange}
           />
-          <div className="w-1/2">
+          <div className="md:w-1/2">
             <img className="rounded-b-2xl" src={tabIMG} alt="" />
           </div>
         </div>
