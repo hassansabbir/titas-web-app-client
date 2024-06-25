@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
                 +88013242352345
               </p>
               <p className="flex items-center gap-2">
-                <AiTwotoneMail/> 
+                <AiTwotoneMail />
                 titas@gmail.com
               </p>
             </ul>

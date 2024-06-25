@@ -1,7 +1,7 @@
 import Slider from "../Slider/Slider";
-
-import GreetingsSection from "./GreetingsSection/GreetingsSection";
-import SubscriptionBox from "./SubscriptionBox/SubscriptionBox";
+import TabDescription from "../TabDescription/TabDescription";
+import GreetingsSection from "../GreetingsSection/GreetingsSection";
+import SubscriptionBox from "../SubscriptionBox/SubscriptionBox";
 
 const Home = () => {
   return (
@@ -9,6 +9,7 @@ const Home = () => {
       <Slider></Slider>
       <GreetingsSection />
       <SubscriptionBox></SubscriptionBox>
+      <TabDescription />
     </div>
   );
 };
