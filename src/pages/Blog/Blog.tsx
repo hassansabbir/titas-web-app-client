@@ -1,6 +1,5 @@
 // import SimpleParallax from "simple-parallax-js";
 import secondImage from "../../assets/SliderImages/imageFive.jpg";
-import { FloatButton } from "antd";
 import Cover from "../../components/shared/Cover";
 
 const Blog = () => {
@@ -54,7 +53,6 @@ const Blog = () => {
             sagittis tempus lacus enim ac dui.
           </p>
         </div>
-        <FloatButton.BackTop />
       </div>
     </>
   );

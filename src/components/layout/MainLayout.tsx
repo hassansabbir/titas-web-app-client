@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../shared/Navbar";
 import Footer from "../shared/Footer";
+import { FloatButton } from "antd";
 
 const MainLayout = () => {
   return (
@@ -10,6 +11,7 @@ const MainLayout = () => {
       <Outlet />
     </div>
     <Footer />
+    <FloatButton.BackTop />
   </div>
   
   );
