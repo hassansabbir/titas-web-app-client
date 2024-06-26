@@ -10,7 +10,7 @@ type cardProps = {
 };
 const CardComponent = ({ image, name, shortDetails }: cardProps) => (
   <Card
-    className="shadow-xl md:w-[400px] w-[300px] mb-10"
+    className="shadow-xl rounded-3xl w-full"
     cover={
       <img
         className="h-[300px] object-cover object-top"

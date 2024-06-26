@@ -5,19 +5,6 @@ import Cover from "../../components/shared/Cover";
 const Blog = () => {
   return (
     <>
-      {/* <div className="relative ">
-        <SimpleParallax orientation="down" scale={1.3}>
-          <img
-            className="md:h-[500px] h-72 w-full object-cover object-center"
-            src={secondImage}
-            alt="image"
-          />
-        </SimpleParallax>
-        <h1 className="absolute inset-0 flex items-center justify-center text-white text-shadow-dark-lg text-4xl">
-          hi
-        </h1>
-      </div> */}
-
       {/* Another option which also is good!*/}
       <Cover image={secondImage} text={"Welcome to our blog "}></Cover>
 
