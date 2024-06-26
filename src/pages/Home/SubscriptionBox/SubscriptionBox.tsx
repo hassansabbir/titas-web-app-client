@@ -1,12 +1,11 @@
-import Container from "../../../components/ui/Container";
 import { FcGlobe, FcIdea, FcManager, FcReading } from "react-icons/fc";
+import Container from "../../../components/ui/Container";
 
 const SubscriptionBox = () => {
   return (
-    <div className=" bg-gray-100 p-4">
+    <div className=" text-black lg:h-[660px] pt-20 md:h-[760px] h-[1550px]">
       {/* Facilities */}
       <Container>
-        {" "}
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 lg:mb-0 lg:mr-8">
             <p className="text-2xl font-semibold p-4 ">
