@@ -1,4 +1,4 @@
-import Container from "../../../../components/ui/Container";
+import Container from "../../../components/ui/Container";
 import { FcGlobe, FcIdea, FcManager, FcReading } from "react-icons/fc";
 
 const SubscriptionBox = () => {

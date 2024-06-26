@@ -18,7 +18,9 @@ const Navbar = () => {
     <>
       <div className="flex fixed w-full z-10 justify-between p-7 px-12  bg-white text-black  ">
         <div>
-          <h1 className="text-3xl font-displayTwo font-bold ">T I T A S</h1>
+          <h1 className="text-3xl font-displayTwo font-bold ">
+            <Link to={"/"}>T I T A S</Link>
+          </h1>
         </div>
         {/* With bigger screen */}
         <div>
