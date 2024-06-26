@@ -7,14 +7,17 @@ import AuthoritySection from "../AuthoritySection/AuthoritySection";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Slider></Slider>
-      <AuthoritySection></AuthoritySection>
-      <GreetingsSection />
-      <SubscriptionBox></SubscriptionBox>
-      <LandingParallax />
-      <TabDescription />
-    </div>
+      <div className="px-3">
+        {" "}
+        <AuthoritySection></AuthoritySection>
+        <GreetingsSection />
+        <SubscriptionBox></SubscriptionBox>
+        <LandingParallax />
+        <TabDescription />
+      </div>
+    </>
   );
 };
 

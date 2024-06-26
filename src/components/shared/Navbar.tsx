@@ -3,7 +3,7 @@
 // import titasLogo from ""
 import { useState } from "react";
 import { Drawer, Dropdown, Space } from "antd";
-import { DownOutlined, MenuOutlined } from "@ant-design/icons";
+import { MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 type MenuItem =
@@ -18,32 +18,52 @@ type MenuItem =
       key?: undefined;
     };
 
+const items: MenuItem[] = [
+  {
+    label: <Link to={"/administrations"}>Teaching Staff</Link>,
+    key: "0",
+  },
+  {
+    type: "divider",
+  },
+  {
+    label: <Link to={"/administrations"}>Office Staff</Link>,
+    key: "1",
+  },
+  {
+    type: "divider",
+  },
+  {
+    label: <Link to={"/administrations"}>Supporting Staff</Link>,
+    key: "2",
+  },
+  {
+    type: "divider",
+  },
+];
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
-  const items: MenuItem[] = [
-    {
-      label: <Link to={"/administrations"}>Teaching Staff</Link>,
-      key: "0",
-    },
-    {
-      type: "divider",
-    },
-    {
-      label: <Link to={"/administrations"}>Office Staff</Link>,
-      key: "1",
-    },
-    {
-      type: "divider",
-    },
-    {
-      label: <Link to={"/administrations"}>Supporting Staff</Link>,
-      key: "2",
-    },
-    {
-      type: "divider",
-    },
-  ];
+  const navItems = (
+    <>
+      <li>
+        <Link to={"/"}>Home</Link>
+      </li>
+      <li>Pages</li>
+      <li>Events</li>
+      <li>
+        <Dropdown menu={{ items }}>
+          <a onClick={(e) => e.preventDefault()}>
+            <Space>Administrations</Space>
+          </a>
+        </Dropdown>
+      </li>
+      <li>
+        <Link to={"/blog"}>Blog</Link>
+      </li>
+      <li>Login</li>
+    </>
+  );
 
   const showDrawer = () => {
     setOpen(true);
@@ -63,40 +83,16 @@ const Navbar = () => {
         {/* With bigger screen */}
         <div>
           <ul className="lg:flex gap-6 text-lg font-displayTwo font-semibold hidden ">
-            <li>
-              <Link to={"/"}>Home</Link>
-            </li>
-            <li>Pages</li>
-            <li>Events</li>
-            <li>
-              <Dropdown menu={{ items }}>
-                <a onClick={(e) => e.preventDefault()}>
-                  <Space>
-                    Administrations
-                    <DownOutlined />
-                  </Space>
-                </a>
-              </Dropdown>
-            </li>
-            <li>
-              <Link to={"/blog"}>Blog</Link>
-            </li>
-            <li>Login</li>
+            {navItems}
           </ul>
         </div>
-        {/* Hamburger for smaller devices */}
+        
         {/* TODO: More to do with responsives for other devices */}
         <div className=" lg:hidden " onClick={showDrawer}>
           <MenuOutlined />
         </div>
         <Drawer title="DRAWER" onClose={onClose} open={open}>
-          <ul>
-            <li>Login</li>
-            <li>Home</li>
-            <li>Pages</li>
-            <li>Events</li>
-            <li>Blog</li>
-          </ul>
+          <ul>{navItems}</ul>
         </Drawer>
       </div>
     </>
