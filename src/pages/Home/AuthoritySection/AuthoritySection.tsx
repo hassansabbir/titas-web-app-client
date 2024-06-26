@@ -10,7 +10,7 @@ const AuthoritySection = () => {
           Welcome to TGAHSc
         </h1>
         <p></p>
-        <div className="flex gap-10 px-10 md:gap-20 my-10 flex-col md:flex-row justify-between items-center">
+        <div className="flex gap-10 md:gap-20 my-10 flex-col md:flex-row justify-between items-center">
           <CardComponent
             image={teacher1}
             shortDetails="Hi i am the head teacher of our school titas gas adarsha high school."

@@ -3,7 +3,7 @@ import Container from "../../../components/ui/Container";
 
 const GreetingsSection = () => {
   return (
-    <div className="bg-gray-100 px-10 py-20">
+    <div className="bg-gray-100 py-20">
       <Container>
         <div className="md:flex gap-10">
           <div className="md:w-1/2">
