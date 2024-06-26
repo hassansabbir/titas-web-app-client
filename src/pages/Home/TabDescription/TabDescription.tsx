@@ -76,7 +76,7 @@ const TabDescription = () => {
   ];
 
   return (
-    <div className="bg-gray-100 px-10 md:py-28 pt-10 h-[700px] md:h-[620px]">
+    <div className="bg-gray-100 px-10 py-20">
       <Container>
         <div className="md:flex gap-10">
           <Tabs

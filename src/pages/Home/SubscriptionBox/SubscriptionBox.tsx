@@ -3,7 +3,7 @@ import Container from "../../../components/ui/Container";
 
 const SubscriptionBox = () => {
   return (
-    <div className=" text-black lg:h-[660px] pt-20 md:h-[760px] h-[1550px]">
+    <div className=" text-black py-20 px-10">
       {/* Facilities */}
       <Container>
         <div className="flex flex-col lg:flex-row items-center justify-between">

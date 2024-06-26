@@ -7,14 +7,14 @@ import { MdDevices } from "react-icons/md";
 const LandingParallax = () => {
   return (
     <>
-      <div className="relative bg-gray-800 h-screen sm:h-96 lg:h-96 overflow-hidden">
+      <div className="relative bg-gray-800 h-screen md:h-96 overflow-hidden">
         <div
           className="w-full h-full bg-fixed bg-cover bg-center"
           style={{ backgroundImage: `url(${image})` }}
         ></div>
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
           {/* Features */}
-          <div className="text-white grid gap-4 md:gap-10 lg:gap-36 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="text-white grid gap-16 lg:gap-36 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             <div className="flex flex-col items-center">
               <FaGraduationCap className="text-5xl mb-2" />
               <p className="text-3xl font-bold">13289</p>
