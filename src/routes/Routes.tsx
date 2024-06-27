@@ -3,6 +3,8 @@ import App from "../App";
 import Home from "../pages/Home/Home/Home";
 import Blog from "../pages/Blog/Blog";
 import Administrations from "../pages/Administrations/Administrations";
+import AdmissionInfo from "../pages/Admission/AdmissionInfo";
+import ApplyNow from "../pages/Admission/ApplyNow";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: "blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "admission/schoolInfo",
+        element: <AdmissionInfo></AdmissionInfo>,
+      },
+      {
+        path: "admission/applyNow",
+        element: <ApplyNow></ApplyNow>,
       },
     ],
   },
