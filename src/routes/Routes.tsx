@@ -2,7 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home/Home/Home";
 import Blog from "../pages/Blog/Blog";
-import Administrations from "../pages/Administrations/Administrations";
+import AllStaffs from "../pages/Administrations/AllStaffs";
+import HeadMastersMessages from "../pages/Administrations/Messages/HeadMastersMessages";
+import PrincipalsMessage from "../pages/Administrations/Messages/PrincipalsMessage";
 
 const router = createBrowserRouter([
   {
@@ -14,8 +16,16 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/administrations",
-        element: <Administrations />,
+        path: "all-staffs",
+        element: <AllStaffs />,
+      },
+      {
+        path: "messages/head-masters-message",
+        element: <HeadMastersMessages />,
+      },
+      {
+        path: "messages/principals-message",
+        element: <PrincipalsMessage />,
       },
       {
         path: "blog",
