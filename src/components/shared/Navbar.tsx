@@ -2,36 +2,52 @@ import { useState } from "react";
 import { Drawer, Dropdown, Space } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import HotlineNavbar from "./HotlineNavbar";
 
 type MenuItem =
   | {
       label: JSX.Element;
       key: string;
       type?: undefined;
+      children?: MenuItem[];
     }
   | {
       type: "divider";
       label?: undefined;
       key?: undefined;
+      children?: undefined;
     };
 
 const items: MenuItem[] = [
   {
-    label: <Link to={"/administrations"}>Teaching Staff</Link>,
+    label: <Link to={"/all-staffs"}>Messages</Link>,
     key: "0",
+    children: [
+      {
+        key: "2-1",
+        label: (
+          <Link to={"/messages/head-masters-message"}>
+            Head Teacher's Message
+          </Link>
+        ),
+      },
+      {
+        key: "2-2",
+        label: (
+          <Link to={"/messages/principals-message"}>Principal's Message</Link>
+        ),
+      },
+    ],
   },
   {
-    type: "divider",
-  },
-  {
-    label: <Link to={"/administrations"}>Office Staff</Link>,
+    label: <Link to={"/all-staffs"}>Teaching Staff</Link>,
     key: "1",
   },
   {
     type: "divider",
   },
   {
-    label: <Link to={"/administrations"}>Supporting Staff</Link>,
+    label: <Link to={"/all-staffs"}>Office Staff</Link>,
     key: "2",
   },
   {
@@ -97,8 +113,9 @@ const Navbar = () => {
   };
 
   return (
-    <>
-      <div className="flex items-center fixed w-full z-10 justify-between py-3 px-12 bg-opacity-60 bg-white text-black">
+    <div className=" fixed w-full z-10 ">
+      <HotlineNavbar />
+      <div className="flex items-center justify-between py-3 px-12 bg-opacity-60 bg-white text-black  ">
         <div>
           <h1 className="text-3xl font-displayTwo font-bold">
             <Link to={"/"}>T I T A S</Link>
@@ -119,7 +136,7 @@ const Navbar = () => {
           <ul>{navItems}</ul>
         </Drawer>
       </div>
-    </>
+    </div>
   );
 };
 
