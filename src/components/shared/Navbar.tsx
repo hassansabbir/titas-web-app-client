@@ -24,7 +24,7 @@ const items: MenuItem[] = [
     key: "0",
     children: [
       {
-        key: "2-1",
+        key: "0-1",
         label: (
           <Link to={"/messages/head-masters-message"}>
             Head Teacher's Message
@@ -32,7 +32,10 @@ const items: MenuItem[] = [
         ),
       },
       {
-        key: "2-2",
+        type: "divider",
+      },
+      {
+        key: "0-2",
         label: (
           <Link to={"/messages/principals-message"}>Principal's Message</Link>
         ),
@@ -40,18 +43,25 @@ const items: MenuItem[] = [
     ],
   },
   {
-    label: <Link to={"/all-staffs"}>Teaching Staff</Link>,
+    type: "divider",
+  },
+  {
+    label: <Link to={"/all-staffs/teachers"}>Teaching Staff</Link>,
     key: "1",
   },
   {
     type: "divider",
   },
   {
-    label: <Link to={"/all-staffs"}>Office Staff</Link>,
+    label: <Link to={"/all-staffs/official-staffs"}>Office Staff</Link>,
     key: "2",
   },
   {
     type: "divider",
+  },
+  {
+    label: <Link to={"/all-staffs/supporting-staffs"}>Supporting Staffs</Link>,
+    key: "2",
   },
 ];
 
