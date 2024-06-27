@@ -1,11 +1,15 @@
 // import SimpleParallax from "simple-parallax-js";
-import secondImage from "../../assets/SliderImages/imageFive.jpg";
+import { Helmet } from "react-helmet-async";
+import secondImage from "../../assets/CommonCoverImages/imageFive.jpg";
 import Cover from "../../components/shared/Cover";
 
 const Blog = () => {
   return (
     <>
       {/* Another option which also is good!*/}
+      <Helmet>
+        <title>TGAHS | Blog</title>
+      </Helmet>
       <Cover image={secondImage} text={"Welcome to our blog "}></Cover>
 
       {/* blog words */}

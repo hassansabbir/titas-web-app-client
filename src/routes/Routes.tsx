@@ -5,6 +5,8 @@ import Blog from "../pages/Blog/Blog";
 import AllStaffs from "../pages/Administrations/AllStaffs";
 import HeadMastersMessages from "../pages/Administrations/Messages/HeadMastersMessages";
 import PrincipalsMessage from "../pages/Administrations/Messages/PrincipalsMessage";
+import AdmissionInfo from "../pages/Admission/AdmissionInfo";
+import ApplyNow from "../pages/Admission/ApplyNow";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "admission/schoolInfo",
+        element: <AdmissionInfo></AdmissionInfo>,
+      },
+      {
+        path: "admission/applyNow",
+        element: <ApplyNow></ApplyNow>,
       },
     ],
   },

@@ -1,14 +1,16 @@
 import CardComponent from "../../../components/shared/CardComponent";
 import Container from "../../../components/ui/Container";
 import teacher1 from "../../../assets/TeacherImages/amzadSir.jpg";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const AuthoritySection = () => {
   return (
-    <div className="py-14">
+    <div className="py-14 text-center">
       <Container>
-        <h1 className="text-4xl underline-offset-4 font-displayThree font-light text-center">
-          Welcome to TGAHSc
-        </h1>
+        <Slide className="text-2xl bold">Welcome to TGAHSc</Slide>
+        <Fade className="font-displayTwo text-sm font-semibold">
+          Some of our teacher and some words from them..
+        </Fade>
         <p></p>
         <div className="flex gap-10 md:gap-20 my-10 flex-col md:flex-row justify-between items-center">
           <CardComponent

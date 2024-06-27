@@ -1,6 +1,3 @@
-// import Container from "../ui/Container";
-
-// import titasLogo from ""
 import { useState } from "react";
 import { Drawer, Dropdown, Space } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
@@ -56,26 +53,45 @@ const items: MenuItem[] = [
   {
     type: "divider",
   },
+];
+
+const admissionItems: MenuItem[] = [
   {
-    label: <Link to={"/all-staffs"}>Supporting Staff</Link>,
-    key: "3",
+    label: <Link to={"/admission/schoolInfo"}>Admission Info</Link>,
+    key: "0",
   },
   {
-    type: "divider",
+    label: <Link to={"/admission/applyNow"}>Apply Now</Link>,
+    key: "1",
   },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+
   const navItems = (
     <>
       <li>
         <Link to={"/"}>Home</Link>
       </li>
-      <li>Pages</li>
+      <li>
+        <Dropdown
+          menu={{
+            items: admissionItems,
+          }}
+        >
+          <a onClick={(e) => e.preventDefault()}>
+            <Space>Admission</Space>
+          </a>
+        </Dropdown>
+      </li>
       <li>Events</li>
       <li>
-        <Dropdown menu={{ items }}>
+        <Dropdown
+          menu={{
+            items,
+          }}
+        >
           <a onClick={(e) => e.preventDefault()}>
             <Space>Administrations</Space>
           </a>
@@ -91,6 +107,7 @@ const Navbar = () => {
   const showDrawer = () => {
     setOpen(true);
   };
+
   const onClose = () => {
     setOpen(false);
   };
@@ -100,19 +117,19 @@ const Navbar = () => {
       <HotlineNavbar />
       <div className="flex items-center justify-between py-3 px-12 bg-opacity-60 bg-white text-black  ">
         <div>
-          <h1 className="text-3xl font-displayTwo font-bold ">
+          <h1 className="text-3xl font-displayTwo font-bold">
             <Link to={"/"}>T I T A S</Link>
           </h1>
         </div>
         {/* With bigger screen */}
         <div>
-          <ul className="lg:flex gap-6 text-lg font-displayTwo font-semibold hidden ">
+          <ul className="lg:flex gap-6 text-lg font-displayTwo font-semibold hidden">
             {navItems}
           </ul>
         </div>
 
         {/* TODO: More to do with responsives for other devices */}
-        <div className=" lg:hidden " onClick={showDrawer}>
+        <div className="lg:hidden" onClick={showDrawer}>
           <MenuOutlined />
         </div>
         <Drawer title="DRAWER" onClose={onClose} open={open}>
