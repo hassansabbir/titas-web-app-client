@@ -9,6 +9,8 @@ import ApplyNow from "../pages/Admission/ApplyNow";
 import Teachers from "../pages/Administrations/AllStaffs/Teachers";
 import OfficeStaffs from "../pages/Administrations/AllStaffs/OfficeStaffs";
 import SupportingStaffs from "../pages/Administrations/AllStaffs/SupportingStaffs";
+import DashboardLayout from "../components/layout/Dashboard/DashboardLayout";
+import StudentProfile from "../pages/Student/StudentProfile";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,16 @@ const router = createBrowserRouter([
       {
         path: "admission/applyNow",
         element: <ApplyNow></ApplyNow>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "student-profile",
+        element: <StudentProfile />,
       },
     ],
   },
