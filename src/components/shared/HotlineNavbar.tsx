@@ -7,7 +7,7 @@ import LiveDate from "../ui/LiveDate";
 
 const HotlineNavbar = () => {
   return (
-    <div className="bg-gray-900 text-white py-3 px-12 flex justify-between text-xs">
+    <div className="bg-gray-900 text-white py-3 uppercase px-12 flex justify-between text-xs">
       <div className="flex gap-10">
         <ul className="flex gap-5">
           <li>
@@ -28,8 +28,9 @@ const HotlineNavbar = () => {
           </p>
         </div>
       </div>
-      <div>
-        <ul className="flex gap-2"></ul>
+      <div className="flex gap-4">
+        <p>Login</p>
+        <p>Register</p>
       </div>
     </div>
   );
