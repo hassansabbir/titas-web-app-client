@@ -3,6 +3,7 @@ import { Drawer, Dropdown, Space } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import HotlineNavbar from "./HotlineNavbar";
+import useScreen from "../../hooks/useScreen";
 
 type MenuItem =
   | {
@@ -77,6 +78,7 @@ const admissionItems: MenuItem[] = [
 ];
 
 const Navbar = () => {
+  const screenSize = useScreen();
   const [open, setOpen] = useState(false);
 
   const navItems = (
@@ -126,7 +128,7 @@ const Navbar = () => {
 
   return (
     <div className=" fixed w-full z-10 ">
-      <HotlineNavbar />
+      <>{screenSize < 768 || screenSize < 1024 ? "" : <HotlineNavbar />}</>
       <div className="flex items-center justify-between py-3 px-12 bg-opacity-60 bg-white text-black  ">
         <div>
           <h1 className="text-3xl font-displayTwo font-bold">
@@ -144,7 +146,7 @@ const Navbar = () => {
         <div className="lg:hidden" onClick={showDrawer}>
           <MenuOutlined />
         </div>
-        <Drawer title="DRAWER" onClose={onClose} open={open}>
+        <Drawer className="text-4xl font-displayTwo" title="Menu"  onClose={onClose} open={open}>
           <ul>{navItems}</ul>
         </Drawer>
       </div>

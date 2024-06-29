@@ -18,40 +18,25 @@ const Sidebar = () => {
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
-      style={{
-        height: "100vh",
-        position: "sticky",
-        top: "0",
-        left: "0",
-        display: "flex",
-        flexDirection: "column",
-      }}
+      className="flex flex-col h-screen sticky top-0 left-0"
     >
-      <div
-        className="mt-20"
-        style={{
-          color: "white",
-          height: "4rem",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div className="mt-10 text-white h-16 flex justify-center items-center">
         <h1>T I T A S</h1>
       </div>
-      <Menu
-        theme="dark"
-        mode="inline"
-        defaultSelectedKeys={["4"]}
-        items={items}
-        style={{ flex: 1 }}
-      />
-      <div style={{ marginBottom: "16px", textAlign: "center" }}>
-        <Link to="/">
-          <Button type="primary" style={{ width: "90%" }}>
-            Home
-          </Button>
-        </Link>
+      <div className="flex-1 flex flex-col justify-between">
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={["4"]}
+          items={items}
+        />
+        <div className="mt-auto mb-4 text-center">
+          <Link to="/">
+            <Button type="primary" className="w-11/12 ">
+              Home
+            </Button>
+          </Link>
+        </div>
       </div>
     </Sider>
   );
