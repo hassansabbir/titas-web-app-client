@@ -4,6 +4,7 @@ import {
   TwitterCircleFilled,
 } from "@ant-design/icons";
 import LiveDate from "../ui/LiveDate";
+import { Link } from "react-router-dom";
 
 const HotlineNavbar = () => {
   return (
@@ -29,8 +30,12 @@ const HotlineNavbar = () => {
         </div>
       </div>
       <div className="flex gap-4">
-        <p>Login</p>
-        <p>Register</p>
+        <p>
+          <Link to={"/login"}>LOGIN</Link>
+        </p>
+        <p>
+          <Link to={"/sign-up"}>REGISTER</Link>
+        </p>
       </div>
     </div>
   );

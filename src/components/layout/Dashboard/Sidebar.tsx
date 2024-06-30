@@ -10,11 +10,11 @@ const Sidebar: React.FC<SidebarProps> = () => {
   const items = [
     {
       label: <Link to={"/dashboard/student-profile"}>Student Profile</Link>,
-      key: "Student Profile1",
+      key: "StudentProfile",
     },
     {
-      label: <Link to={"/dashboard/teaching-staff"}>Teaching Staff</Link>,
-      key: "Teaching Staff",
+      label: <Link to={"/dashboard/my-results"}>My Results</Link>,
+      key: "myResults",
     },
   ];
 
