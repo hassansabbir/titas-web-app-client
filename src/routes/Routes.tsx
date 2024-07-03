@@ -57,14 +57,6 @@ const router = createBrowserRouter([
         path: "admission/applyNow",
         element: <ApplyNow></ApplyNow>,
       },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/sign-up",
-        element: <SignUp />,
-      },
     ],
   },
   {
@@ -80,6 +72,15 @@ const router = createBrowserRouter([
         element: <MyResults />,
       },
     ],
+  },
+
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/sign-up",
+    element: <SignUp />,
   },
 
   {
