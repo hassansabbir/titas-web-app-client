@@ -3,9 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      displayOne: ["Pacifico", "cursive"],
-      displayTwo: ["Montserrat", "sans-serif"],
-      displayThree: ["Josefin Sans", "sans-serif"],
+      displayOne:["Montserrat","sans-serif"],
+      displayTwo:["Raleway", "sans-serif"],
+      displayThree: ["Arsenal SC", "sans-serif"],
     },
     extend: {},
   },
