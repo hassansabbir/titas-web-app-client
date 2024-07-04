@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 const items = [
   {
     id: "5",
-    url: "https://res.cloudinary.com/dzl9yxixg/image/upload/v1714741157/photo-1714402002623-86d68590c545_eyrfna.jpg",
+    url: "https://i.ibb.co/0MdqSRr/titas-School2.jpg",
     title: "Snow-Capped Serenity",
     description:
       "Snow blankets the high mountain peaks, offering a serene and pristine white canvas against the crisp blue sky.",
@@ -12,7 +12,7 @@ const items = [
   },
   {
     id: "7",
-    url: "https://res.cloudinary.com/dzl9yxixg/image/upload/v1714741157/photo-1712313242836-3ae9c1fd6767_ynpin3.jpg",
+    url: "https://i.ibb.co/C2JhYbt/titas-School3.jpg",
     title: "Verdant Valley Vista",
     description:
       "A lush green valley nestled between mountains, bathed in the warm light of a setting sun, offering a tranquil retreat.",
@@ -20,7 +20,7 @@ const items = [
   },
   {
     id: "8",
-    url: "https://res.cloudinary.com/dzl9yxixg/image/upload/v1714741157/photo-1714523479594-13c0bb72fcf3_n85lma.jpg",
+    url: "https://i.ibb.co/0MdqSRr/titas-School2.jpg",
     title: "Rocky Ridges",
     description:
       "The rugged ridges of the mountain form a stark contrast against the soft clouds above, embodying the spirit of adventure.",
@@ -74,13 +74,15 @@ interface GalleryProps {
 
 const GreetingCard: React.FC<GalleryProps> = ({ items, setIndex, index }) => {
   return (
-    <div className="min-w-max mx-auto gap-1 flex pb-20 pt-10">
+    <div className="min-w-max mx-auto gap-1 md:flex pb-20 pt-10">
       {items.map((item, i) => (
         <motion.div
           key={item.id}
           className={`rounded-xl relative ${
-            index === i ? "w-[450px] " : "w-[50px]"
-          } h-[400px] flex-shrink-0 transition-width ease-in-linear duration-500 origin-center`}
+            index === i
+              ? "w-[93vw] md:w-[450px] h-[400px]"
+              : "w-[93vw] md:w-[50px] md:h-[400px] h-[80px]"
+          } flex-shrink-0 transition-all ease-in-out duration-500 origin-center`}
           whileTap={{ scale: 0.95 }}
           onClick={() => {
             setIndex(i);
@@ -89,9 +91,9 @@ const GreetingCard: React.FC<GalleryProps> = ({ items, setIndex, index }) => {
           <motion.img
             src={item.url}
             alt={item.title}
-            className={`${
+            className={`w-full h-full object-cover rounded-xl ${
               index === i ? "cursor-default" : "cursor-pointer"
-            } w-full rounded-xl h-full object-cover`}
+            }`}
           />
           <AnimatePresence initial={false}>
             {index === i && (
@@ -101,7 +103,10 @@ const GreetingCard: React.FC<GalleryProps> = ({ items, setIndex, index }) => {
                 animate="show"
                 className="absolute flex rounded-xl flex-col justify-end h-full top-0 p-3 space-y-2 overflow-hidden bg-gradient-to-t from-gray-100/60 to-transparent"
               >
-                <motion.h1 variants={articleVariants} className="text-2xl font-semibold">
+                <motion.h1
+                  variants={articleVariants}
+                  className="text-2xl font-semibold"
+                >
                   {item.title}
                 </motion.h1>
                 <motion.p variants={articleVariants} className="leading-[120%]">
