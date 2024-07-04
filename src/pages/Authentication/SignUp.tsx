@@ -49,7 +49,7 @@ const SignUp = () => {
             </h1>
             <Form
               onFinish={handleSubmit(onSubmit)}
-              className="border-2 p-8 rounded-lg shadow-lg flex flex-col items-center"
+              className="w-full max-w-[422px] mx-auto [background:linear-gradient(45deg,#F2F4FF,#F2F4FF)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.slate.100/.48)_80%,_theme(colors.blue.900)_86%,_theme(colors.blue.900)_90%,_theme(colors.blue.900)_94%,_theme(colors.slate.100/.48))_border-box] rounded-2xl border-2 border-transparent animate-border p-8 shadow-lg flex flex-col items-center"
               name="basic"
               autoComplete="off"
             >

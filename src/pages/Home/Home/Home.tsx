@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
       <motion.div
-        className="h-2 mt-10 w-full mx-auto fixed top-0 bg-gradient-to-r from-indigo-800 via-purple-800 to-sky-900 z-50"
+        className="h-2 md:mt-10 mt-14 w-full mx-auto fixed top-0 bg-gradient-to-r from-indigo-800 via-purple-800 to-sky-900 z-50"
         style={{ scaleX: scrollYProgress }}
       ></motion.div>
       <Helmet>

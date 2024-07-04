@@ -21,7 +21,7 @@ type MenuItem =
 
 const items: MenuItem[] = [
   {
-    label: <Link to={"/all-staffs"}>Messages</Link>,
+    label: <Link to={"/messages/head-masters-message"}>Messages</Link>,
     key: "0",
     children: [
       {
@@ -146,7 +146,12 @@ const Navbar = () => {
         <div className="lg:hidden" onClick={showDrawer}>
           <MenuOutlined />
         </div>
-        <Drawer className="text-4xl font-displayTwo" title="Menu"  onClose={onClose} open={open}>
+        <Drawer
+          className="text-4xl font-displayTwo"
+          title="Menu"
+          onClose={onClose}
+          open={open}
+        >
           <ul>{navItems}</ul>
         </Drawer>
       </div>
