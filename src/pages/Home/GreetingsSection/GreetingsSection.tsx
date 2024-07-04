@@ -1,29 +1,26 @@
 import schoolIMG from "../../../assets/titasSchool.jpg";
 import Container from "../../../components/ui/Container";
+import IndexPage from "./GreetingCard";
 
 const GreetingsSection = () => {
   return (
     <div className="bg-gray-100 py-20">
       <Container>
-        <div className="md:flex gap-10">
+        <div className="md:flex md:gap-20 flex-col-reverse md:flex-row">
           <div className="md:w-1/2">
             <h1 className="text-4xl font-bold">
-              <span className="border-b-4 border-blue-700">Wel</span>come
+              <span className="border-b-4 border-blue-700">Welcome</span>
             </h1>
-            <p className="py-2 md:py-5 w-11/12">
+            <p className="py-2 md:py-5 w-full md:w-11/12">
               Welcome to Titas Gas Adarsha High School, where academic
               excellence meets holistic development. Join us in nurturing future
               leaders in a vibrant and supportive community.
             </p>
-            <img
-              className="md:w-11/12 md:h-[320px] mt-10 rounded-xl shadow-xl"
-              src={schoolIMG}
-              alt=""
-            />
+            <IndexPage />
           </div>
           <div className="md:w-1/2 mt-10 md:mt-0">
             <h1 className="text-4xl font-bold">
-              <span className="border-b-4 border-blue-700">Lat</span>est News
+              <span className="border-b-4 border-blue-700">Latest News</span>
             </h1>
             <p className="py-2 md:py-5">
               Stay updated with the latest news and events at Titas Gas Adarsha
@@ -33,7 +30,7 @@ const GreetingsSection = () => {
             <div className="md:flex items-center mt-5 gap-5">
               <img
                 src={schoolIMG}
-                className="md:size-36 rounded-lg shadow-lg object-cover"
+                className="md:w-36 md:h-36 rounded-lg shadow-lg object-cover"
                 alt=""
               />
               <div>
@@ -51,7 +48,7 @@ const GreetingsSection = () => {
             <div className="md:flex items-center mt-6 gap-5">
               <img
                 src={schoolIMG}
-                className="md:size-36 mt-2 rounded-lg shadow-lg object-cover"
+                className="md:w-36 md:h-36 mt-2 rounded-lg shadow-lg object-cover"
                 alt=""
               />
               <div>
