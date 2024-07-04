@@ -29,14 +29,14 @@ const Login = () => {
             className=" shadow-2xl h-1/2 md:h-screen w-full md:w-1/2"
           />
           {/* Right side with the form */}
-          <section className="bg-blue-50 p-5 md:p-10 h-1/2 md:h-screen w-full md:w-1/2 shadow-2xl rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none flex items-center justify-center">
-            <div className="max-w-md w-full">
+          <section className="bg-blue-50  p-5 md:p-10 h-1/2 md:h-screen w-full md:w-1/2 shadow-2xl rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none flex items-center justify-center">
+            <div className="max-w-md w-full ">
               <h1 className="text-4xl font-bold mb-5 text-center">
                 Login Now!
               </h1>
               <Form
                 onFinish={handleSubmit(onSubmit)}
-                className="border-2 p-8 rounded-lg shadow-lg flex flex-col items-center"
+                className="w-full max-w-[422px] mx-auto [background:linear-gradient(45deg,#F2F4FF,#F2F4FF)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.slate.100/.48)_80%,_theme(colors.blue.900)_86%,_theme(colors.blue.900)_90%,_theme(colors.blue.900)_94%,_theme(colors.slate.100/.48))_border-box] rounded-2xl border-4 border-transparent animate-border p-8 shadow-lg flex flex-col items-center"
                 name="basic"
                 initialValues={{ remember: true }}
                 autoComplete="off"
