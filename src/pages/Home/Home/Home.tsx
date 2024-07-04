@@ -6,10 +6,17 @@ import LandingParallax from "../LandingParallax/LandingParallax";
 import AuthoritySection from "../AuthoritySection/AuthoritySection";
 import GallerySection from "../GallerySection/GallerySection";
 import { Helmet } from "react-helmet-async";
+import { motion, useScroll } from "framer-motion";
 
 const Home = () => {
+  const { scrollYProgress } = useScroll();
+
   return (
     <>
+      <motion.div
+        className="h-2 mt-10 w-full mx-auto fixed top-0 bg-gradient-to-r from-indigo-800 via-purple-800 to-sky-900 z-50"
+        style={{ scaleX: scrollYProgress }}
+      ></motion.div>
       <Helmet>
         <title>TGAHS | Home</title>
       </Helmet>
