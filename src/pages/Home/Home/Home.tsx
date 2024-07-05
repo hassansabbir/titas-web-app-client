@@ -1,5 +1,5 @@
 import Slider from "../Slider/Slider";
-import TabDescription from "../TabDescription/TabDescription";
+// import TabDescription from "../TabDescription/TabDescription";
 import GreetingsSection from "../GreetingsSection/GreetingsSection";
 import SubscriptionBox from "../SubscriptionBox/SubscriptionBox";
 import LandingParallax from "../LandingParallax/LandingParallax";
@@ -7,6 +7,7 @@ import AuthoritySection from "../AuthoritySection/AuthoritySection";
 import GallerySection from "../GallerySection/GallerySection";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll } from "framer-motion";
+import AlumniMarquee from "../AlumniMarquee/AlumniMarquee";
 
 const Home = () => {
   const { scrollYProgress } = useScroll();
@@ -27,9 +28,10 @@ const Home = () => {
         <GreetingsSection />
         <SubscriptionBox></SubscriptionBox>
         <LandingParallax />
-        <TabDescription />
+        {/* <TabDescription /> */}
       </div>
       <GallerySection />
+      <AlumniMarquee />
     </>
   );
 };

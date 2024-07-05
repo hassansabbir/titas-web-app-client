@@ -43,7 +43,7 @@ const SubscriptionBox = () => {
           </div>
           {/* Box */}
           <>
-            <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+            <div className="w-full max-w-[422px] mx-auto [background:linear-gradient(45deg,#F2F4FF,#F2F4FF)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.slate.100/.48)_80%,_theme(colors.blue.900)_86%,_theme(colors.blue.900)_90%,_theme(colors.blue.900)_94%,_theme(colors.slate.100/.48))_border-box] rounded-2xl border-2 border-transparent animate-border p-8 shadow-lg">
               <h2 className="text-2xl font-semibold mb-6 text-center">
                 Sign up for updates
               </h2>

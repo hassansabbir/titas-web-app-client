@@ -77,6 +77,21 @@ const admissionItems: MenuItem[] = [
   },
 ];
 
+const resourcesItems: MenuItem[] = [
+  {
+    label: <Link to={"/events"}>Events</Link>,
+    key: "0",
+  },
+  {
+    label: <Link to={"/results"}>Results</Link>,
+    key: "1",
+  },
+  {
+    label: <Link to={"/alumni"}>Alumni</Link>,
+    key: "2",
+  },
+];
+
 const Navbar = () => {
   const screenSize = useScreen();
   const [open, setOpen] = useState(false);
@@ -97,12 +112,23 @@ const Navbar = () => {
           </a>
         </Dropdown>
       </li>
-      <li>Events</li>
+      <li>
+        <Dropdown
+          menu={{
+            items: resourcesItems,
+          }}
+        >
+          <a onClick={(e) => e.preventDefault()}>
+            <Space>Resources & Events</Space>
+          </a>
+        </Dropdown>
+      </li>
       <li>
         <Dropdown
           menu={{
             items,
           }}
+          overlayClassName="custom-dropdown"
         >
           <a onClick={(e) => e.preventDefault()}>
             <Space>Administrations</Space>
@@ -128,6 +154,13 @@ const Navbar = () => {
 
   return (
     <div className=" fixed w-full z-10 ">
+      <style>
+        {`
+          .custom-dropdown .ant-dropdown-menu {
+            width: 150px !important; 
+          }
+        `}
+      </style>
       <>{screenSize < 768 || screenSize < 1024 ? "" : <HotlineNavbar />}</>
       <div className="flex items-center justify-between py-3 px-12 bg-opacity-60 bg-white text-black  ">
         <div>
@@ -137,7 +170,7 @@ const Navbar = () => {
         </div>
         {/* With bigger screen */}
         <div>
-          <ul className="lg:flex gap-6 text-lg font-displayTwo font-semibold hidden">
+          <ul className="lg:flex gap-6 text-md font-displayTwo font-semibold hidden">
             {navItems}
           </ul>
         </div>

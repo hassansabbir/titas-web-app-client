@@ -1,4 +1,4 @@
-import schoolIMG from "../../../assets/titasSchool.jpg";
+// import schoolIMG from "../../../assets/titasSchool.jpg";
 import Container from "../../../components/ui/Container";
 import IndexPage from "./GreetingCard";
 
@@ -6,8 +6,8 @@ const GreetingsSection = () => {
   return (
     <div className="bg-gray-100 py-20">
       <Container>
-        <div className="md:flex md:gap-20 flex-col-reverse md:flex-row">
-          <div className="md:w-1/2">
+        <div className=" md:gap-20 flex-col-reverse md:flex-row">
+          <div className="">
             <h1 className="text-4xl font-bold">
               <span className="border-b-4 border-blue-700">Welcome</span>
             </h1>
@@ -18,7 +18,7 @@ const GreetingsSection = () => {
             </p>
             <IndexPage />
           </div>
-          <div className="md:w-1/2 mt-10 md:mt-0">
+          {/* <div className="md:w-1/2 mt-10 md:mt-0">
             <h1 className="text-4xl font-bold">
               <span className="border-b-4 border-blue-700">Latest News</span>
             </h1>
@@ -63,7 +63,7 @@ const GreetingsSection = () => {
                 <p className="py-2">July 20, 2023</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </Container>
     </div>
