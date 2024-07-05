@@ -80,8 +80,8 @@ const GreetingCard: React.FC<GalleryProps> = ({ items, setIndex, index }) => {
           key={item.id}
           className={`rounded-xl relative ${
             index === i
-              ? "w-[93vw] md:w-[450px] h-[400px]"
-              : "w-[93vw] md:w-[50px] md:h-[400px] h-[80px]"
+              ? "w-[93vw] md:w-[55vw] h-[500px]"
+              : "w-[93vw] md:w-[50px] md:h-[500px] h-[80px]"
           } flex-shrink-0 transition-all ease-in-out duration-500 origin-center`}
           whileTap={{ scale: 0.95 }}
           onClick={() => {
@@ -101,7 +101,7 @@ const GreetingCard: React.FC<GalleryProps> = ({ items, setIndex, index }) => {
                 variants={articleVariants}
                 initial="hidden"
                 animate="show"
-                className="absolute flex rounded-xl flex-col justify-end h-full top-0 p-3 space-y-2 overflow-hidden bg-gradient-to-t from-gray-100/60 to-transparent"
+                className="absolute flex w-full rounded-xl flex-col justify-end h-full top-0 p-3 space-y-2 overflow-hidden bg-gradient-to-t from-gray-100/60 to-transparent"
               >
                 <motion.h1
                   variants={articleVariants}
@@ -125,7 +125,7 @@ const IndexPage: React.FC = () => {
   const [index, setIndex] = useState(2);
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <GreetingCard items={items} index={index} setIndex={setIndex} />
     </div>
   );

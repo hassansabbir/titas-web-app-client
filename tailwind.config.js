@@ -10,10 +10,20 @@ export default {
     extend: {
       animation: {
         border: "border 2s linear infinite",
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
       },
       keyframes: {
         border: {
           to: { "--border-angle": "360deg" },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
       },
     },

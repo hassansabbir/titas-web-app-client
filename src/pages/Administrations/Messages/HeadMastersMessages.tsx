@@ -5,7 +5,7 @@ import Container from "../../../components/ui/Container";
 
 const HeadMastersMessages = () => {
   return (
-    <div className="pt-16">
+    <div className="md:pt-10 pt-16">
       <Cover image={headSir} text="Head Master's Message" />
       <Container className="my-10">
         <h1 className="text-4xl font-bold text-center">Messages</h1>

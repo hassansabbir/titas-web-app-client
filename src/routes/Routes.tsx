@@ -15,6 +15,8 @@ import MyResults from "../pages/Dashboard/Student/MyResults";
 import Login from "../pages/Authentication/Login";
 import SignUp from "../pages/Authentication/SignUp";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
+import EventsPage from "../pages/Resources&Events/Events/EventsPage";
+import ResultsPage from "../pages/Resources&Events/Results/ResultsPage";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "events",
+        element: <EventsPage />,
+      },
+      {
+        path: "results",
+        element: <ResultsPage />,
       },
       {
         path: "messages/head-masters-message",
