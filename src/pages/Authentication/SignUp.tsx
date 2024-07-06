@@ -3,6 +3,21 @@ import signUpBg from "../../assets/SliderImages/imageFour.jpg";
 import { Button, Form, Input, InputNumber, Select } from "antd";
 import { Link } from "react-router-dom";
 
+
+const passwordValidation = {
+  required: "Password is required",
+  minLength: {
+    value: 6,
+    message: "Password must be at least 6 characters long",
+  },
+  pattern: {
+    value:
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+    message:
+      "Password must include at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character",
+  },
+};
+
 const SignUp = () => {
   const {
     control,
@@ -137,7 +152,7 @@ const SignUp = () => {
                 <Controller
                   name="password"
                   control={control}
-                  rules={{ required: "Please input your password!" }}
+                  rules={passwordValidation}
                   render={({ field }) => <Input.Password {...field} />}
                 />
               </Form.Item>
