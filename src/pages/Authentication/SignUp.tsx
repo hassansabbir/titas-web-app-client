@@ -1,6 +1,6 @@
 import { useForm, Controller, FieldValues } from "react-hook-form";
 import signUpBg from "../../assets/SliderImages/imageFour.jpg";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, InputNumber, Select } from "antd";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
@@ -12,7 +12,15 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
+    const currentYear = new Date().getFullYear().toString();
+    const studentId = `st-${currentYear}-${data.class}-${data.rollNumber}`;
+
+    const finalData = {
+      ...data,
+      studentId: studentId,
+    };
+
+    console.log(finalData);
   };
 
   return (
@@ -68,44 +76,53 @@ const SignUp = () => {
                   render={({ field }) => <Input {...field} />}
                 />
               </Form.Item>
-
               <Form.Item
-                label="Phone Number"
-                validateStatus={errors.phoneNumber ? "error" : ""}
-                help={
-                  errors.phoneNumber ? String(errors.phoneNumber.message) : ""
-                }
+                label="Class"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
-                className="w-full text-center"
+                validateStatus={errors.class ? "error" : ""}
+                className="w-full justify-center"
               >
                 <Controller
-                  name="phoneNumber"
+                  name="class"
                   control={control}
-                  rules={{
-                    required: "Please input your phone number!",
-                    pattern: {
-                      value: /^[0-9]+$/,
-                      message: "Phone number must be numeric!",
-                    },
-                  }}
-                  render={({ field }) => <Input {...field} />}
+                  rules={{ required: "Please select a class!" }}
+                  render={({ field }) => (
+                    <Select {...field} className="w-full">
+                      <Select.Option value="01">Class 1</Select.Option>
+                      <Select.Option value="02">Class 2</Select.Option>
+                      <Select.Option value="03">Class 3</Select.Option>
+                      <Select.Option value="04">Class 4</Select.Option>
+                      <Select.Option value="05">Class 5</Select.Option>
+                      <Select.Option value="06">Class 6</Select.Option>
+                      <Select.Option value="07">Class 7</Select.Option>
+                      <Select.Option value="08">Class 8</Select.Option>
+                      <Select.Option value="09">Class 9</Select.Option>
+                      <Select.Option value="10">Class 10</Select.Option>
+                    </Select>
+                  )}
                 />
               </Form.Item>
-
               <Form.Item
-                label="Username"
-                validateStatus={errors.username ? "error" : ""}
-                help={errors.username ? String(errors.username.message) : ""}
+                label="Roll Number"
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
-                className="w-full text-center"
+                validateStatus={errors.rollNumber ? "error" : ""}
+                className="w-full justify-center"
               >
                 <Controller
-                  name="username"
+                  name="rollNumber"
                   control={control}
-                  rules={{ required: "Please input your username!" }}
-                  render={({ field }) => <Input {...field} />}
+                  rules={{ required: "Please input your roll number!" }}
+                  render={({ field }) => (
+                    <InputNumber
+                      {...field}
+                      min={1}
+                      max={100}
+                      className="w-full"
+                      stringMode
+                    />
+                  )}
                 />
               </Form.Item>
 
