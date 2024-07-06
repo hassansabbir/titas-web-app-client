@@ -1,26 +1,95 @@
-import { useForm, Controller, FieldValues } from "react-hook-form";
+import {
+  useForm,
+  Controller,
+  FieldValues,
+  SubmitHandler,
+} from "react-hook-form";
 import signUpBg from "../../assets/SliderImages/imageFour.jpg";
 import { Button, Form, Input, InputNumber, Select } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { TUser } from "../../types/UserTypes";
+import { useMutation } from "@tanstack/react-query";
+import Swal from "sweetalert2";
+
+type FormData = TUser;
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const {
     control,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm<TUser>();
 
-  const onSubmit = (data: FieldValues) => {
+  const { mutateAsync } = useMutation<FormData, unknown, FormData>({
+    mutationFn: async (data) => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_SERVER_API}/users`,
+          {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Failed to create user");
+        }
+
+        const responseData = await response.json();
+
+        if (responseData) {
+          Swal.fire({
+            title: "Success",
+            text: "New Student Created Successfully",
+            icon: "success",
+            confirmButtonText: "Done",
+          });
+        }
+        navigate("/dashboard", { state: { from: location } });
+        return responseData;
+      } catch (error) {
+        console.error("Error adding new student:", error);
+
+        throw error;
+      }
+    },
+  });
+
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const currentYear = new Date().getFullYear().toString();
     const studentId = `st-${currentYear}-${data.class}-${data.rollNumber}`;
 
-    const finalData = {
-      ...data,
+    // Regex pattern for password validation (at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character)
+    const passwordPattern =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (!passwordPattern.test(data.password)) {
+      // If password does not match the regex pattern
+      alert(
+        "Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one digit, and one special character."
+      );
+      return;
+    }
+
+    // Prepare final data object with TUser structure
+    const finalData: TUser = {
       studentId: studentId,
+      fullName: data.fullName,
+      class: data.class,
+      rollNumber: data.rollNumber.toString(),
+      password: data.password,
+      role: "student",
+      isDeleted: false,
     };
 
-    console.log(finalData);
+    await mutateAsync(finalData);
   };
 
   return (
@@ -118,14 +187,14 @@ const SignUp = () => {
                     <InputNumber
                       {...field}
                       min={1}
-                      max={100}
+                      max={200}
                       className="w-full"
                       stringMode
                     />
                   )}
                 />
               </Form.Item>
-
+              {/* Password and Confirm Password fields */}
               <Form.Item
                 label="Password"
                 validateStatus={errors.password ? "error" : ""}
@@ -137,11 +206,18 @@ const SignUp = () => {
                 <Controller
                   name="password"
                   control={control}
-                  rules={{ required: "Please input your password!" }}
+                  rules={{
+                    required: "Please input your password!",
+                    pattern: {
+                      value:
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                      message:
+                        "Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one digit, and one special character.",
+                    },
+                  }}
                   render={({ field }) => <Input.Password {...field} />}
                 />
               </Form.Item>
-
               <Form.Item
                 label="Confirm Password"
                 validateStatus={errors.confirmPassword ? "error" : ""}
@@ -167,6 +243,7 @@ const SignUp = () => {
                 />
               </Form.Item>
 
+              {/* Submit button */}
               <Form.Item
                 wrapperCol={{ span: 24 }}
                 className="w-full text-center"
@@ -175,6 +252,7 @@ const SignUp = () => {
                   Submit
                 </Button>
               </Form.Item>
+              {/* Login link */}
               <div className="text-center">
                 Already have an account?
                 <span className="text-blue-700 font-semibold underline">
