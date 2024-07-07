@@ -10,8 +10,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TUser } from "../../types/UserTypes";
 import { useMutation } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-
-type FormData = TUser;
+import axios from "axios";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -24,42 +23,28 @@ const SignUp = () => {
     formState: { errors },
   } = useForm<TUser>();
 
-  const { mutateAsync } = useMutation<FormData, unknown, FormData>({
-    mutationFn: async (data) => {
-      try {
-        console.log(data);
-        const response = await fetch(
-          `${import.meta.env.VITE_SERVER_API}/users`,
-          {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || "Failed to create user");
-        }
-
-        const responseData = await response.json();
-
-        if (responseData) {
-          Swal.fire({
-            title: "Success",
-            text: "New Student Created Successfully",
-            icon: "success",
-            confirmButtonText: "Done",
-          });
-        }
-        navigate("/dashboard", { state: { from: location } });
-        return responseData;
-      } catch (error) {
-        console.error("Error adding new student:", error);
-
-        throw error;
-      }
+  const { mutate } = useMutation({
+    mutationFn: async (data: TUser) => {
+      const { data: response } = await axios.post("/api/sdafasdf", data);
+      navigate("/dashboard", { state: { from: location } });
+      return response;
+    },
+    onSuccess: () => {
+      Swal.fire({
+        title: "Success",
+        text: "New Student Created Successfully",
+        icon: "success",
+        confirmButtonText: "Done",
+      });
+    },
+    onError: (error) => {
+      console.log(error);
+      Swal.fire({
+        title: "Error",
+        text: "There is an error",
+        icon: "error",
+        confirmButtonText: "Done",
+      });
     },
   });
 
@@ -99,7 +84,7 @@ const SignUp = () => {
       isDeleted: false,
     };
 
-    await mutateAsync(finalData);
+    mutate(finalData);
   };
 
   return (
