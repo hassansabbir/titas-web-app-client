@@ -27,6 +27,7 @@ const SignUp = () => {
   const { mutateAsync } = useMutation<FormData, unknown, FormData>({
     mutationFn: async (data) => {
       try {
+        console.log(data);
         const response = await fetch(
           `${import.meta.env.VITE_SERVER_API}/users`,
           {
@@ -85,6 +86,15 @@ const SignUp = () => {
       class: data.class,
       rollNumber: data.rollNumber.toString(),
       password: data.password,
+      image: "skldhfgkpjsadhgf",
+      email: "skdjfhlskajdhbfgjklsadhbfg",
+      address: "skdjfhlskajdhbfgjklsadhbfg",
+      guardianDetails: {
+        guardianName: "skdjfhlskajdhbfgjklsadhbfg",
+        guardianContact: "skdjfhlskajdhbfgjklsadhbfg",
+        guardianRelation: "skdjfhlskajdhbfgjklsadhbfg",
+      },
+      phoneNumber: "skdjfhlskajdhbfgjklsadhbfg",
       role: "student",
       isDeleted: false,
     };
