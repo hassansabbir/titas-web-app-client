@@ -18,3 +18,15 @@ export type TUser = {
   role: "student";
   isDeleted: boolean;
 };
+
+export interface User {
+  student_id: string;
+  fullName: string;
+  password: string;
+}
+
+export interface UserState {
+  user: User | null;
+}
+
+export type UserAction = { type: "LOGIN"; payload: User } | { type: "LOGOUT" };

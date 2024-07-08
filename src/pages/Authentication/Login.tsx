@@ -4,6 +4,7 @@ import { Button, Form, Input } from "antd";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useUser } from "../../Context/UserContext";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,6 +15,8 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const { dispatch } = useUser();
+
   const onSubmit = async (data: FieldValues) => {
     console.log(data);
 
@@ -22,10 +25,13 @@ const Login = () => {
       console.log(response.data);
       if (data.password === response?.data?.data?.password) {
         console.log("Password matched");
+
+        dispatch({ type: "LOGIN", payload: response?.data?.data });
+
         Swal.fire({
           position: "top",
           icon: "success",
-          title: "Login Successfull.",
+          title: "Login Successful.",
           showConfirmButton: false,
           timer: 1000,
         });
