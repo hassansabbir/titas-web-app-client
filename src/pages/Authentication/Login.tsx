@@ -1,17 +1,46 @@
 import { useForm, Controller, FieldValues } from "react-hook-form";
 import signUpBg from "../../assets/SliderImages/imageFour.jpg";
-import { Button, Checkbox, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Button, Form, Input } from "antd";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: FieldValues) => {
+  const onSubmit = async (data: FieldValues) => {
     console.log(data);
+
+    try {
+      const response = await axios.get(`/api/user/${data.student_id}`, data);
+      console.log(response.data);
+      if (data.password === response?.data?.data?.password) {
+        console.log("Password matched");
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Login Successfull.",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/dashboard", { state: { from: location } });
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: "The password did't match.",
+          icon: "error",
+          confirmButtonText: "Done",
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching user:", error);
+    }
   };
 
   return (
@@ -42,26 +71,32 @@ const Login = () => {
                 autoComplete="off"
               >
                 <Form.Item
-                  label="Username"
-                  name="username"
+                  label="Student ID"
                   labelCol={{ span: 24 }}
                   wrapperCol={{ span: 24 }}
                   className="w-full text-center"
                 >
                   <Controller
-                    name="username"
+                    name="student_id"
                     control={control}
-                    rules={{ required: "Please input your username!" }}
-                    render={({ field }) => <Input {...field} />}
+                    rules={{ required: "Please input your student ID!" }}
+                    render={({ field }) => (
+                      <Input
+                        placeholder="e.g.: stu-year-class-roll"
+                        {...field}
+                      />
+                    )}
                   />
-                  {errors.username && (
-                    <p className="text-red-500">Please input your username!</p>
+
+                  {errors.student_id && (
+                    <p className="text-red-500">
+                      Please input your student ID!
+                    </p>
                   )}
                 </Form.Item>
 
                 <Form.Item
                   label="Password"
-                  name="password"
                   labelCol={{ span: 24 }}
                   wrapperCol={{ span: 24 }}
                   className="w-full text-center"
@@ -70,31 +105,16 @@ const Login = () => {
                     name="password"
                     control={control}
                     rules={{ required: "Please input your password!" }}
-                    render={({ field }) => <Input.Password {...field} />}
+                    render={({ field }) => (
+                      <Input.Password
+                        {...field}
+                        placeholder="Enter your password"
+                      />
+                    )}
                   />
                   {errors.password && (
                     <p className="text-red-500">Please input your password!</p>
                   )}
-                </Form.Item>
-
-                <Form.Item
-                  name="remember"
-                  valuePropName="checked"
-                  wrapperCol={{ span: 24 }}
-                  className="w-full text-center"
-                >
-                  <Controller
-                    name="remember"
-                    control={control}
-                    render={({ field }) => (
-                      <Checkbox
-                        checked={field.value}
-                        onChange={(e) => field.onChange(e.target.checked)}
-                      >
-                        Remember me
-                      </Checkbox>
-                    )}
-                  />
                 </Form.Item>
 
                 <Form.Item
