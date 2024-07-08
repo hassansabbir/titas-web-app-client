@@ -25,7 +25,7 @@ const SignUp = () => {
 
   const { mutate } = useMutation({
     mutationFn: async (data: TUser) => {
-      const { data: response } = await axios.post("/api/sdafasdf", data);
+      const { data: response } = await axios.post("/api/users", data);
       navigate("/dashboard", { state: { from: location } });
       return response;
     },
@@ -71,15 +71,15 @@ const SignUp = () => {
       class: data.class,
       rollNumber: data.rollNumber.toString(),
       password: data.password,
-      image: "skldhfgkpjsadhgf",
-      email: "skdjfhlskajdhbfgjklsadhbfg",
-      address: "skdjfhlskajdhbfgjklsadhbfg",
+      image: "",
+      email: "",
+      address: "",
       guardianDetails: {
-        guardianName: "skdjfhlskajdhbfgjklsadhbfg",
-        guardianContact: "skdjfhlskajdhbfgjklsadhbfg",
-        guardianRelation: "skdjfhlskajdhbfgjklsadhbfg",
+        guardianName: "",
+        guardianContact: "",
+        guardianRelation: "",
       },
-      phoneNumber: "skdjfhlskajdhbfgjklsadhbfg",
+      phoneNumber: "",
       role: "student",
       isDeleted: false,
     };
