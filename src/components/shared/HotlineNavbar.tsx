@@ -5,8 +5,11 @@ import {
 } from "@ant-design/icons";
 import LiveDate from "../ui/LiveDate";
 import { Link } from "react-router-dom";
+import { useUser } from "../../Context/UserContext";
 
 const HotlineNavbar = () => {
+  const { state } = useUser();
+
   return (
     <div className="bg-gray-900 text-white py-3 uppercase px-12 flex justify-between text-xs">
       <div className="flex gap-10">
@@ -36,6 +39,8 @@ const HotlineNavbar = () => {
         <p>
           <Link to={"/sign-up"}>REGISTER</Link>
         </p>
+
+        <h1>{state?.user?.fullName}</h1>
       </div>
     </div>
   );
