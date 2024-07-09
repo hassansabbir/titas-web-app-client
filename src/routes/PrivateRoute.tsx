@@ -1,8 +1,7 @@
-// Components/PrivateRoute.tsx
-import React, { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { useUser } from "../Context/UserContext";
 import Swal from "sweetalert2";
+import { useUser } from "../Context/useUser";
 
 const PrivateRoute = ({ children }: { children: ReactNode }) => {
   const { state, dispatch } = useUser();
@@ -11,7 +10,6 @@ const PrivateRoute = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const checkAuth = async () => {
       dispatch({ type: "SET_LOADING", payload: true });
-      // Simulate an async operation like checking auth status from an API
       await new Promise((resolve) => setTimeout(resolve, 1000));
       dispatch({ type: "SET_LOADING", payload: false });
     };
@@ -34,14 +32,13 @@ const PrivateRoute = ({ children }: { children: ReactNode }) => {
   }, [state.user, state.loading]);
 
   if (state.loading) {
-    return <div>Loading...</div>; // Replace this with your actual loading component
+    return <div>Loading...</div>;
   }
 
   if (state.user) {
     return <>{children}</>;
   }
 
-  // If user is not logged in, navigate to login page
   return <Navigate to="/login" state={{ from: location }} replace />;
 };
 

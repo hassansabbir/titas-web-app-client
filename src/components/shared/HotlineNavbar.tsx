@@ -5,8 +5,8 @@ import {
 } from "@ant-design/icons";
 import LiveDate from "../ui/LiveDate";
 import { Link } from "react-router-dom";
-import { useUser } from "../../Context/UserContext";
 import Logout from "../../pages/Authentication/Logout";
+import { useUser } from "../../Context/useUser";
 
 const HotlineNavbar = () => {
   const { state } = useUser();

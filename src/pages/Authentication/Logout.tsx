@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import Swal from "sweetalert2";
-import { useUser } from "../../Context/UserContext";
+import { useUser } from "../../Context/useUser";
 
 const Logout = () => {
   const { dispatch } = useUser();

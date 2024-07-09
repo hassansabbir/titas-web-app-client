@@ -1,7 +1,7 @@
-import React, { createContext, useReducer, useContext, ReactNode } from "react";
+import React, { createContext, useReducer, ReactNode } from "react";
 import { UserState, UserAction } from "../types/UserTypes";
 
-const UserContext = createContext<
+export const UserContext = createContext<
   | {
       state: UserState;
       dispatch: React.Dispatch<UserAction>;
@@ -37,12 +37,4 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </UserContext.Provider>
   );
-};
-
-export const useUser = () => {
-  const context = useContext(UserContext);
-  if (context === undefined) {
-    throw new Error("useUser must be used within a UserProvider");
-  }
-  return context;
 };
