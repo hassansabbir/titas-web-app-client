@@ -17,6 +17,7 @@ import SignUp from "../pages/Authentication/SignUp";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import EventsPage from "../pages/Resources&Events/Events/EventsPage";
 import ResultsPage from "../pages/Resources&Events/Results/ResultsPage";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -71,7 +72,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "student-profile",

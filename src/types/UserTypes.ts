@@ -27,6 +27,10 @@ export interface User {
 
 export interface UserState {
   user: User | null;
+  loading: boolean;
 }
 
-export type UserAction = { type: "LOGIN"; payload: User } | { type: "LOGOUT" };
+export type UserAction =
+  | { type: "LOGIN"; payload: User }
+  | { type: "LOGOUT" }
+  | { type: "SET_LOADING"; payload: boolean };
