@@ -26,13 +26,13 @@ const SignUp = () => {
   const { mutate } = useMutation({
     mutationFn: async (data: TUser) => {
       const { data: response } = await axios.post("/api/users", data);
-      navigate("/dashboard", { state: { from: location } });
+      navigate("/login", { state: { from: location } });
       return response;
     },
     onSuccess: () => {
       Swal.fire({
         title: "Success",
-        text: "New Student Created Successfully",
+        text: "New Student Created Successfully! Now login.",
         icon: "success",
         confirmButtonText: "Done",
       });

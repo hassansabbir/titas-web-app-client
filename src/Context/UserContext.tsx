@@ -1,5 +1,3 @@
-// src/context/UserContext.tsx
-
 import React, { createContext, useReducer, useContext, ReactNode } from "react";
 import { UserState, UserAction } from "../types/UserTypes";
 
@@ -12,15 +10,20 @@ const UserContext = createContext<
 >(undefined);
 
 const initialState: UserState = {
-  user: null,
+  user: JSON.parse(localStorage.getItem("user") || "null"),
+  loading: false,
 };
 
 const userReducer = (state: UserState, action: UserAction): UserState => {
   switch (action.type) {
     case "LOGIN":
-      return { ...state, user: action.payload };
+      localStorage.setItem("user", JSON.stringify(action.payload));
+      return { ...state, user: action.payload, loading: false };
     case "LOGOUT":
-      return { ...state, user: null };
+      localStorage.removeItem("user");
+      return { ...state, user: null, loading: false };
+    case "SET_LOADING":
+      return { ...state, loading: action.payload };
     default:
       return state;
   }
