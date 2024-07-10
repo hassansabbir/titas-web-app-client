@@ -20,7 +20,7 @@ export type TUser = {
 };
 
 export interface User {
-  student_id: string;
+  studentId: string;
   fullName: string;
   password: string;
 }
