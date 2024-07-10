@@ -96,8 +96,8 @@ const AlumniMarquee = () => {
           Some Honorable Alumni
         </h1>
         <Marquee pauseOnHover className="[--duration:20s]">
-          {firstRow.map((review) => (
-            <ReviewCard key={review.batchNo} {...review} />
+          {firstRow.map((review, i) => (
+            <ReviewCard key={i} {...review} />
           ))}
         </Marquee>
 
