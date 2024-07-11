@@ -1,12 +1,14 @@
 import { Button, Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
-import { AiOutlineHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import React from "react";
+import { AiOutlineHome } from "react-icons/ai";
+
 interface SidebarProps {
   onCollapse?: (collapsed: boolean) => void;
 }
+
 const Sidebar: React.FC<SidebarProps> = () => {
-  // const [collapsed, setCollapsed] = useState(false);
   const items = [
     {
       label: <Link to={"/dashboard/student-profile"}>Student Profile</Link>,
@@ -18,26 +20,13 @@ const Sidebar: React.FC<SidebarProps> = () => {
     },
   ];
 
-  // const handleMenuOpen = () => {
-  //   setCollapsed(!collapsed);
-  //   if (onCollapse) {
-  //     onCollapse(!collapsed);
-  //   }
-  // };
-
-  // const handleMenuOpen = () => {
-  //   setCollapsed(true);
-  //   if (collapsed) {
-  //     onCollapse(!collapsed);
-  //   }
-  // };
-
   return (
     <>
       <Sider
-        breakpoint="lg"
+        width={250}
+        breakpoint="xl"
         collapsedWidth={"0"}
-        className="flex flex-col h-screen sticky top-0 left-0 "
+        className="flex flex-col sticky top-0 left-0 "
       >
         <div className="flex h-full flex-col justify-between">
           <div>
@@ -53,9 +42,9 @@ const Sidebar: React.FC<SidebarProps> = () => {
               />
             </div>
           </div>
-          <div className="mt-auto mb-4 text-center ">
+          <div className="mt-auto mb-4 text-center">
             <Link to="/">
-              <Button type="primary" className="w-11/12 ">
+              <Button type="primary" className="w-11/12 mb-4">
                 <AiOutlineHome /> Home
               </Button>
             </Link>
