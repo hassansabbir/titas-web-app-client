@@ -96,7 +96,7 @@ const resourcesItems: MenuItem[] = [
 const Navbar = () => {
   const screenSize = useScreen();
   const [open, setOpen] = useState(false);
-  const dashboardUrl = useDashboardUrl();
+  const dashboardUrl= useDashboardUrl();
 
   const navItems = (
     <>
@@ -141,7 +141,7 @@ const Navbar = () => {
         <Link to={"/blog"}>Blog</Link>
       </li>
       <li>
-        <Link to={dashboardUrl}>Dashboard</Link>
+        <Link to={dashboardUrl as string}>Dashboard</Link>
       </li>
     </>
   );

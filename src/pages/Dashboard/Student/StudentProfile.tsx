@@ -87,7 +87,7 @@ const StudentProfile = () => {
   ];
 
   return (
-    <div>
+    <div className="font-displayOne">
       <div className="text-center mb-5">
         <Button type="primary" className="shadow-lg">
           Edit Details
@@ -104,18 +104,20 @@ const StudentProfile = () => {
           alt="profile Image"
         />
         <div className="text-center">
-          <h1 className="text-3xl font-bold">{currentUser.fullName}</h1>
+          <h1 className="text-3xl font-semibold">{currentUser.fullName}</h1>
           <p className="font-semibold">
             Student ID:{" "}
-            <span className="text-xl font-bold hover:text-blue-800 hover:underline hover:cursor-pointer">
+            <span className="text-xl font-semibold hover:text-blue-800 hover:underline hover:cursor-pointer">
               {currentUser.studentId}
             </span>
           </p>
         </div>
       </div>
       <div className="md:flex gap-5 my-10 w-full">
-        <div className="w-1/2">
-          <h1 className="text-2xl font-bold text-center">Student Details</h1>
+        <div className="md:w-1/2">
+          <h1 className="text-2xl font-semibold text-center">
+            Student Details
+          </h1>
           <Table
             columns={columns}
             dataSource={studentData}
@@ -123,8 +125,10 @@ const StudentProfile = () => {
             pagination={false}
           />
         </div>
-        <div className="w-1/2">
-          <h1 className="text-2xl font-bold text-center">Guardian Details</h1>
+        <div className="md:w-1/2 mt-10 md:mt-0">
+          <h1 className="text-2xl font-semibold text-center">
+            Guardian Details
+          </h1>
           <Table
             columns={columns}
             dataSource={guardianData}

@@ -50,7 +50,7 @@ const SignUp = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const currentYear = new Date().getFullYear().toString();
-    const studentId = `st-${currentYear}-${data.class}-${data.rollNumber}`;
+    const studentId = `stu-${currentYear}-${data.class}-${data.rollNumber}`;
 
     // Regex pattern for password validation (at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character)
     const passwordPattern =
