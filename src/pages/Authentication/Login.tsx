@@ -1,22 +1,22 @@
 import { useForm, Controller, FieldValues } from "react-hook-form";
 import signUpBg from "../../assets/SliderImages/imageFour.jpg";
 import { Button, Form, Input } from "antd";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useUser } from "../../Context/useUser";
 
 const Login = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { dispatch } = useUser();
-
+  const { dispatch, loading } = useUser();
+  const { state } = useUser();
   const onSubmit = async (data: FieldValues) => {
     console.log(data);
 
@@ -28,6 +28,8 @@ const Login = () => {
 
         dispatch({ type: "LOGIN", payload: response?.data?.data });
 
+        if (loading) return <div>Loading...</div>;
+
         Swal.fire({
           position: "top",
           icon: "success",
@@ -35,7 +37,14 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1000,
         });
-        navigate("/dashboard", { state: { from: location } });
+
+        if (state?.user?.role === "student") {
+          navigate("/dashboard/student-profile");
+        } else if (state?.user?.role === "admin") {
+          navigate("/dashboard/admin-profile");
+        } else if (state?.user?.role === "superAdmin") {
+          navigate("/dashboard/superadmin-profile");
+        }
       } else {
         Swal.fire({
           title: "Error",
