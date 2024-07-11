@@ -15,7 +15,7 @@ export type TUser = {
   rollNumber: string;
   password: string;
   confirmPassword?: string;
-  role: "student";
+  role: "superAdmin" | "admin" | "teacher" | "student";
   isDeleted: boolean;
 };
 
@@ -23,6 +23,7 @@ export interface User {
   studentId: string;
   fullName: string;
   password: string;
+  role: "superAdmin" | "admin" | "teacher" | "student";
 }
 
 export interface UserState {

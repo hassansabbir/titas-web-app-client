@@ -1,6 +1,6 @@
 const MyResults = () => {
   return (
-    <div>
+    <div className="h-screen">
       <h1>This is MyResults component.</h1>
     </div>
   );

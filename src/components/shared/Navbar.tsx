@@ -4,6 +4,7 @@ import { MenuOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import HotlineNavbar from "./HotlineNavbar";
 import useScreen from "../../hooks/useScreen";
+import { useDashboardUrl } from "../../hooks/useDashboardUrl";
 
 type MenuItem =
   | {
@@ -95,6 +96,7 @@ const resourcesItems: MenuItem[] = [
 const Navbar = () => {
   const screenSize = useScreen();
   const [open, setOpen] = useState(false);
+  const dashboardUrl = useDashboardUrl();
 
   const navItems = (
     <>
@@ -139,7 +141,7 @@ const Navbar = () => {
         <Link to={"/blog"}>Blog</Link>
       </li>
       <li>
-        <Link to={"/dashboard/student-profile"}>Dashboard</Link>
+        <Link to={dashboardUrl}>Dashboard</Link>
       </li>
     </>
   );
