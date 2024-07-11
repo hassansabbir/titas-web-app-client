@@ -3,13 +3,18 @@ import Sider from "antd/es/layout/Sider";
 import { Link } from "react-router-dom";
 import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
+import { useUser } from "../../../Context/useUser";
 
 interface SidebarProps {
   onCollapse?: (collapsed: boolean) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = () => {
-  const items = [
+  const { state } = useUser();
+
+  const userRole = state.user?.role;
+
+  const studentItems = [
     {
       label: <Link to={"/dashboard/student-profile"}>Student Profile</Link>,
       key: "StudentProfile",
@@ -19,6 +24,19 @@ const Sidebar: React.FC<SidebarProps> = () => {
       key: "myResults",
     },
   ];
+
+  const adminItems = [
+    {
+      label: <Link to={"/dashboard/admin-profile"}>Admin Profile</Link>,
+      key: "adminProfile",
+    },
+    {
+      label: <Link to={"/dashboard/manage-users"}>Manage Users</Link>,
+      key: "manageUsers",
+    },
+  ];
+
+  const items = userRole === "admin" ? adminItems : studentItems;
 
   return (
     <>
