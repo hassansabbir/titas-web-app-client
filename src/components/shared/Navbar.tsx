@@ -139,7 +139,7 @@ const Navbar = () => {
         <Link to={"/blog"}>Blog</Link>
       </li>
       <li>
-        <Link to={"/dashboard"}>Dashboard</Link>
+        <Link to={"/dashboard/student-profile"}>Dashboard</Link>
       </li>
     </>
   );

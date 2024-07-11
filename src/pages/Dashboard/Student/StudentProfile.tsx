@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, Table, TableColumnsType } from "antd";
 import { useUser } from "../../../Context/useUser";
 
 const StudentProfile = () => {
@@ -9,6 +9,83 @@ const StudentProfile = () => {
   if (!currentUser) return <div>No user data available</div>;
 
   console.log(currentUser);
+
+  interface DataType {
+    key: React.Key;
+    field: string;
+    value: string;
+  }
+
+  const columns: TableColumnsType<DataType> = [
+    {
+      title: "",
+      dataIndex: "field",
+      width: "25%",
+    },
+    {
+      title: "",
+      dataIndex: "value",
+      width: "75%",
+      render: (text: string) => <span className="font-semibold">{text}</span>,
+    },
+  ];
+
+  const studentData: DataType[] = [
+    {
+      key: "1",
+      field: "Full Name",
+      value: currentUser.fullName,
+    },
+    {
+      key: "2",
+      field: "Student ID",
+      value: currentUser.studentId,
+    },
+    {
+      key: "3",
+      field: "Email",
+      value: currentUser.email,
+    },
+    {
+      key: "4",
+      field: "Address",
+      value: currentUser.address,
+    },
+    {
+      key: "5",
+      field: "Phone Number",
+      value: currentUser.phoneNumber,
+    },
+    {
+      key: "6",
+      field: "Class",
+      value: currentUser.class,
+    },
+    {
+      key: "7",
+      field: "Roll Number",
+      value: currentUser.rollNumber,
+    },
+  ];
+
+  const guardianData: DataType[] = [
+    {
+      key: "1",
+      field: "Guardian Name",
+      value: currentUser.guardianDetails.guardianName,
+    },
+    {
+      key: "2",
+      field: "Guardian Contact",
+      value: currentUser.guardianDetails.guardianContact,
+    },
+    {
+      key: "3",
+      field: "Guardian Relation",
+      value: currentUser.guardianDetails.guardianRelation,
+    },
+  ];
+
   return (
     <div>
       <div className="text-center mb-5">
@@ -34,6 +111,26 @@ const StudentProfile = () => {
               {currentUser.studentId}
             </span>
           </p>
+        </div>
+      </div>
+      <div className="md:flex gap-5 my-10 w-full">
+        <div className="w-1/2">
+          <h1 className="text-2xl font-bold text-center">Student Details</h1>
+          <Table
+            columns={columns}
+            dataSource={studentData}
+            size="middle"
+            pagination={false}
+          />
+        </div>
+        <div className="w-1/2">
+          <h1 className="text-2xl font-bold text-center">Guardian Details</h1>
+          <Table
+            columns={columns}
+            dataSource={guardianData}
+            size="middle"
+            pagination={false}
+          />
         </div>
       </div>
     </div>
