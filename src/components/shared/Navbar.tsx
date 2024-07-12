@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import HotlineNavbar from "./HotlineNavbar";
 import useScreen from "../../hooks/useScreen";
 import { useDashboardUrl } from "../../hooks/useDashboardUrl";
-
+import { motion } from "framer-motion";
 type MenuItem =
   | {
       label: JSX.Element;
@@ -96,7 +96,7 @@ const resourcesItems: MenuItem[] = [
 const Navbar = () => {
   const screenSize = useScreen();
   const [open, setOpen] = useState(false);
-  const dashboardUrl= useDashboardUrl();
+  const dashboardUrl = useDashboardUrl();
 
   const navItems = (
     <>
@@ -166,9 +166,15 @@ const Navbar = () => {
       <>{screenSize < 768 || screenSize < 1024 ? "" : <HotlineNavbar />}</>
       <div className="flex items-center justify-between py-3 px-12 bg-opacity-60 bg-white text-black  ">
         <div>
-          <h1 className="text-3xl font-displayTwo font-bold">
-            <Link to={"/"}>T I T A S</Link>
-          </h1>
+          <Link to={"/"} className="font-displayTwo font-bold">
+            <motion.div
+              initial={{ fontSize: 20, opacity: 0 }}
+              animate={{ fontSize: 100, opacity: 2 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+            >
+              T I T A S
+            </motion.div>
+          </Link>
         </div>
         {/* With bigger screen */}
         <div>
