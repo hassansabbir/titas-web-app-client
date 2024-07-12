@@ -1,9 +1,22 @@
-import { Layout } from "antd";
+import { Dropdown, Layout, MenuProps } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useUser } from "../../../Context/useUser";
 import { FaArrowLeft } from "react-icons/fa6";
+import Logout from "../../../pages/Authentication/Logout";
+import EditProfileModal from "../../../pages/Dashboard/Student/StudentProfile/EditProfileModal";
+
+const items: MenuProps["items"] = [
+  {
+    label: <EditProfileModal />,
+    key: "0",
+  },
+  {
+    label: <Logout></Logout>,
+    key: "1",
+  },
+];
 
 const DashboardLayout = () => {
   const navigate = useNavigate();
@@ -23,18 +36,20 @@ const DashboardLayout = () => {
           <Link className="hover:text-blue-400" to={"/"}>
             T I T A S
           </Link>
-          <div>
-            {currentUser && (
-              <div className="flex gap-3 text-lg cursor-pointer items-center">
-                <div className="avatar">
-                  <img
-                    className="size-11 object-cover rounded-full p-1"
-                    src={currentUser?.image}
-                  />
-                </div>
+          <Dropdown menu={{ items }} trigger={["click"]}>
+            <a onClick={(e) => e.preventDefault()}>
+              <div>
+                {currentUser && (
+                  <div className="avatar">
+                    <img
+                      className="size-11 object-cover rounded-full p-1"
+                      src={currentUser?.image}
+                    />
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            </a>
+          </Dropdown>
         </Header>
         <Content style={{ margin: "24px 16px 0" }}>
           <div

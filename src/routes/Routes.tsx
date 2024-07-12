@@ -10,7 +10,7 @@ import Teachers from "../pages/Administrations/AllStaffs/Teachers";
 import OfficeStaffs from "../pages/Administrations/AllStaffs/OfficeStaffs";
 import SupportingStaffs from "../pages/Administrations/AllStaffs/SupportingStaffs";
 import DashboardLayout from "../components/layout/Dashboard/DashboardLayout";
-import StudentProfile from "../pages/Dashboard/Student/StudentProfile";
+import StudentProfile from "../pages/Dashboard/Student/StudentProfile/StudentProfile";
 import MyResults from "../pages/Dashboard/Student/MyResults";
 import Login from "../pages/Authentication/Login";
 import SignUp from "../pages/Authentication/SignUp";

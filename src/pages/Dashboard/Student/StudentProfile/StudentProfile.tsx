@@ -1,5 +1,5 @@
-import { Button, Table, TableColumnsType } from "antd";
-import { useUser } from "../../../Context/useUser";
+import { Table, TableColumnsType } from "antd";
+import { useUser } from "../../../../Context/useUser";
 
 const StudentProfile = () => {
   const { currentUser, loading, error } = useUser();
@@ -13,7 +13,7 @@ const StudentProfile = () => {
   interface DataType {
     key: React.Key;
     field: string;
-    value: string;
+    value: string | undefined;
   }
 
   const columns: TableColumnsType<DataType> = [
@@ -68,31 +68,30 @@ const StudentProfile = () => {
     },
   ];
 
+  const filteredStudentData = studentData.filter((item) => item.value);
+
   const guardianData: DataType[] = [
     {
       key: "1",
       field: "Guardian Name",
-      value: currentUser.guardianDetails.guardianName,
+      value: currentUser?.guardianDetails?.guardianName,
     },
     {
       key: "2",
       field: "Guardian Contact",
-      value: currentUser.guardianDetails.guardianContact,
+      value: currentUser?.guardianDetails?.guardianContact,
     },
     {
       key: "3",
       field: "Guardian Relation",
-      value: currentUser.guardianDetails.guardianRelation,
+      value: currentUser?.guardianDetails?.guardianRelation,
     },
   ];
 
+  const filteredGuardianData = guardianData.filter((item) => item.value);
+
   return (
     <div className="font-displayOne">
-      <div className="text-center mb-5">
-        <Button type="primary" className="shadow-lg">
-          Edit Details
-        </Button>
-      </div>
       <div className="flex flex-col gap-5 items-center">
         <img
           className="w-52 h-52 rounded-2xl object-cover"
@@ -120,7 +119,7 @@ const StudentProfile = () => {
           </h1>
           <Table
             columns={columns}
-            dataSource={studentData}
+            dataSource={filteredStudentData}
             size="middle"
             pagination={false}
           />
@@ -131,7 +130,7 @@ const StudentProfile = () => {
           </h1>
           <Table
             columns={columns}
-            dataSource={guardianData}
+            dataSource={filteredGuardianData}
             size="middle"
             pagination={false}
           />
