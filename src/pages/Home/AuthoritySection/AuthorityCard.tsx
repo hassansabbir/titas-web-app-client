@@ -1,7 +1,7 @@
 const items = [
   {
     id: "1",
-    url: "https://i.ibb.co/mbVCy5K/242776259-180841560856895-4978111939269678625-n.jpg",
+    url: "https://i.ibb.co/FmpZb9J/IMG-20240622-224009-926.jpg",
     title: "Adrian Paul",
     description: "COO & Co-Founder",
     tags: ["Floral", "Highlands", "Wildflowers", "Colorful", "Resilience"],
@@ -9,7 +9,7 @@ const items = [
 
   {
     id: "2",
-    url: "https://i.ibb.co/mbVCy5K/242776259-180841560856895-4978111939269678625-n.jpg",
+    url: "https://i.ibb.co/QMbJGk6/58138efa960cd.jpg",
     title: "Flualy Cual",
     description: "Founder & CEO",
     tags: ["Twilight", "Peaks", "Silhouette", "Evening Sky", "Peaceful"],

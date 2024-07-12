@@ -20,6 +20,7 @@ import ResultsPage from "../pages/Resources&Events/Results/ResultsPage";
 import PrivateRoute from "./PrivateRoute";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
+import SuperAdminProfile from "../pages/Dashboard/SuperAdmin/SuperAdminProfile";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
       {
         path: "manage-users",
         element: <ManageUsers />,
+      },
+      {
+        path: "superAdmin-profile",
+        element: <SuperAdminProfile />,
       },
     ],
   },
