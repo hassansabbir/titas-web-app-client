@@ -30,13 +30,26 @@ const Sidebar: React.FC<SidebarProps> = () => {
       label: <Link to={"/dashboard/admin-profile"}>Admin Profile</Link>,
       key: "adminProfile",
     },
+  ];
+  const superAdminItems = [
+    {
+      label: (
+        <Link to={"/dashboard/superAdmin-profile"}>Super Admin Profile</Link>
+      ),
+      key: "adminProfile",
+    },
     {
       label: <Link to={"/dashboard/manage-users"}>Manage Users</Link>,
       key: "manageUsers",
     },
   ];
 
-  const items = userRole === "admin" ? adminItems : studentItems;
+  const items =
+    userRole === "superAdmin"
+      ? superAdminItems
+      : userRole === "admin"
+      ? adminItems
+      : studentItems;
 
   return (
     <>

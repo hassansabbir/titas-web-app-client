@@ -1,0 +1,3 @@
+TODOs:
+1. Create Loading Spinner
+2.Lazy Loading

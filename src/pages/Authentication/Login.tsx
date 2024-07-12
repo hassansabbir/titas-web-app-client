@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm, Controller, FieldValues } from "react-hook-form";
 import signUpBg from "../../assets/SliderImages/imageFour.jpg";
 import { Button, Form, Input } from "antd";
@@ -15,8 +16,29 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { dispatch, loading } = useUser();
+  const { dispatch } = useUser();
   const { state } = useUser();
+
+  useEffect(() => {
+    if (state.user) {
+      if (state.user?.role === "student") {
+        navigate("/dashboard/student-profile");
+      } else if (state.user?.role === "admin") {
+        navigate("/dashboard/admin-profile");
+      } else if (state.user?.role === "superAdmin") {
+        navigate("/dashboard/superAdmin-profile");
+      }
+
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "Login Successful.",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+    }
+  }, [state.user, navigate]);
+
   const onSubmit = async (data: FieldValues) => {
     console.log(data);
 
@@ -27,28 +49,10 @@ const Login = () => {
         console.log("Password matched");
 
         dispatch({ type: "LOGIN", payload: response?.data?.data });
-
-        if (loading) return <div>Loading...</div>;
-
-        Swal.fire({
-          position: "top",
-          icon: "success",
-          title: "Login Successful.",
-          showConfirmButton: false,
-          timer: 1000,
-        });
-
-        if (state?.user?.role === "student") {
-          navigate("/dashboard/student-profile");
-        } else if (state?.user?.role === "admin") {
-          navigate("/dashboard/admin-profile");
-        } else if (state?.user?.role === "superAdmin") {
-          navigate("/dashboard/superadmin-profile");
-        }
       } else {
         Swal.fire({
           title: "Error",
-          text: "The password did't match.",
+          text: "The password didn't match.",
           icon: "error",
           confirmButtonText: "Done",
         });
