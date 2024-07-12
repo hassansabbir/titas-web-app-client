@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useUser } from "../../Context/useUser";
+import PageWrapper from "../../components/ui/PageWrapper";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <PageWrapper>
       <div className="min-h-screen flex font-displayThree justify-center items-center">
         <div className="flex flex-col md:flex-row w-full items-center justify-center">
           {/* Left side with the image */}
@@ -157,7 +158,7 @@ const Login = () => {
       </div>
       {/* Sparkling card */}
       {/* <SpotlightCards></SpotlightCards> */}
-    </>
+    </PageWrapper>
   );
 };
 
