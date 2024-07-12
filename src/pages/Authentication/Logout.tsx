@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import Swal from "sweetalert2";
 import { useUser } from "../../Context/useUser";
 
@@ -16,11 +15,7 @@ const Logout = () => {
     });
   };
 
-  return (
-    <Button size="small" type="primary" onClick={handleLogout}>
-      Logout
-    </Button>
-  );
+  return <p onClick={handleLogout}>Logout</p>;
 };
 
 export default Logout;

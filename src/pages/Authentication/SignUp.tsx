@@ -26,6 +26,7 @@ const SignUp = () => {
   const { mutate } = useMutation({
     mutationFn: async (data: TUser) => {
       const { data: response } = await axios.post("/api/users", data);
+      console.log(response);
       navigate("/login", { state: { from: location } });
       return response;
     },
@@ -71,15 +72,6 @@ const SignUp = () => {
       class: data.class,
       rollNumber: data.rollNumber.toString(),
       password: data.password,
-      image: "",
-      email: "",
-      address: "",
-      guardianDetails: {
-        guardianName: "",
-        guardianContact: "",
-        guardianRelation: "",
-      },
-      phoneNumber: "",
       role: "student",
       isDeleted: false,
     };

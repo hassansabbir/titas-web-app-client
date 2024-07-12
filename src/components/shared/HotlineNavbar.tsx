@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import Logout from "../../pages/Authentication/Logout";
 import { useUser } from "../../Context/useUser";
 import { motion } from "framer-motion";
+import { Button } from "antd";
 const HotlineNavbar = () => {
   const { state } = useUser();
 
@@ -41,7 +42,9 @@ const HotlineNavbar = () => {
         {state.user ? (
           <div className="flex items-center justify-center gap-5">
             <h1>{state?.user?.fullName}</h1>
-            <Logout />
+            <Button type="primary" size="small">
+              <Logout />
+            </Button>
           </div>
         ) : (
           <>

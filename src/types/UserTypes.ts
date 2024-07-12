@@ -1,15 +1,15 @@
 export type TGuardian = {
-  guardianName: string;
-  guardianContact: string;
-  guardianRelation: string;
+  guardianName?: string | undefined;
+  guardianContact?: string | undefined;
+  guardianRelation?: string | undefined;
 };
 export type TUser = {
   studentId: string;
-  image: string;
-  email: string;
-  address: string;
-  guardianDetails: TGuardian;
-  phoneNumber: string;
+  image?: string | undefined;
+  email?: string | undefined;
+  address?: string | undefined;
+  guardianDetails?: TGuardian | undefined;
+  phoneNumber?: string | undefined;
   fullName: string;
   class: string;
   rollNumber: string;
