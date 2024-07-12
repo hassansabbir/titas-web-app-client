@@ -6,6 +6,8 @@ import HotlineNavbar from "./HotlineNavbar";
 import useScreen from "../../hooks/useScreen";
 import { useDashboardUrl } from "../../hooks/useDashboardUrl";
 import { motion } from "framer-motion";
+import { useUser } from "../../Context/useUser";
+
 type MenuItem =
   | {
       label: JSX.Element;
@@ -94,10 +96,10 @@ const resourcesItems: MenuItem[] = [
 ];
 
 const Navbar = () => {
+  const { state } = useUser();
   const screenSize = useScreen();
   const [open, setOpen] = useState(false);
   const dashboardUrl = useDashboardUrl();
-
   const navItems = (
     <>
       <li>
@@ -140,9 +142,30 @@ const Navbar = () => {
       <li>
         <Link to={"/blog"}>Blog</Link>
       </li>
-      <li>
-        <Link to={dashboardUrl as string}>Dashboard</Link>
-      </li>
+      {state.user && (
+        <li>
+          <Link to={dashboardUrl as string}>Dashboard</Link>
+        </li>
+      )}
+      <>
+        {!state.user && (
+          <>
+            {screenSize < 768 || screenSize < 1024 ? (
+              <>
+                {" "}
+                <li>
+                  <Link to={"/login"}>Login</Link>
+                </li>
+                <li>
+                  <Link to={"/sign-up"}>Register</Link>
+                </li>
+              </>
+            ) : (
+              " "
+            )}
+          </>
+        )}
+      </>
     </>
   );
 
