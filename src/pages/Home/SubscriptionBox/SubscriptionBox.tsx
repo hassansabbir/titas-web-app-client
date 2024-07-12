@@ -1,9 +1,13 @@
 import { FcGlobe, FcIdea, FcManager, FcReading } from "react-icons/fc";
 import Container from "../../../components/ui/Container";
+import { motion } from "framer-motion";
+import useScrollGrow from "../../../hooks/ScrollGrowHook";
 
 const SubscriptionBox = () => {
+  const { style, componentRef } = useScrollGrow();
+
   return (
-    <div className="text-black py-20 ">
+    <motion.div style={style} ref={componentRef} className="text-black py-20 ">
       {/* Facilities */}
       <Container>
         <div className="flex flex-col lg:flex-row items-center justify-between">
@@ -106,7 +110,7 @@ const SubscriptionBox = () => {
           </>
         </div>
       </Container>
-    </div>
+    </motion.div>
   );
 };
 

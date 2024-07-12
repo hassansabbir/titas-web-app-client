@@ -71,15 +71,6 @@ const SignUp = () => {
       class: data.class,
       rollNumber: data.rollNumber.toString(),
       password: data.password,
-      image: "",
-      email: "",
-      address: "",
-      guardianDetails: {
-        guardianName: "",
-        guardianContact: "",
-        guardianRelation: "",
-      },
-      phoneNumber: "",
       role: "student",
       isDeleted: false,
     };
