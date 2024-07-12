@@ -2,12 +2,13 @@ import Cover from "../../../components/shared/Cover";
 import parallaxBG from "../../../assets/cityBg.jpg";
 import sanaSir from "../../../assets/sanaSir.jpg";
 import Container from "../../../components/ui/Container";
+import PageWrapper from "../../../components/ui/PageWrapper";
 
 const PrincipalsMessage = () => {
   return (
     <div className="pt-16">
       <Cover image={parallaxBG} text="Principal's Message" />
-      <Container className="my-10">
+      <PageWrapper><Container className="my-10">
         <h1 className="text-4xl font-bold text-center">Messages</h1>
         <div className="flex flex-col items-center justify-center my-10">
           <img
@@ -56,7 +57,7 @@ const PrincipalsMessage = () => {
             labore nulla minima.
           </p>
         </div>
-      </Container>
+      </Container></PageWrapper>
     </div>
   );
 };
