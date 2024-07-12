@@ -1,5 +1,6 @@
 import React, { SetStateAction, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import useScrollGrow from "../../../hooks/ScrollGrowHook";
 
 const items = [
   {
@@ -123,11 +124,12 @@ const GreetingCard: React.FC<GalleryProps> = ({ items, setIndex, index }) => {
 
 const IndexPage: React.FC = () => {
   const [index, setIndex] = useState(2);
+  const { style, componentRef } = useScrollGrow();
 
   return (
-    <div className="relative w-full">
+    <motion.div style={style} ref={componentRef} className="relative w-full">
       <GreetingCard items={items} index={index} setIndex={setIndex} />
-    </div>
+    </motion.div>
   );
 };
 
