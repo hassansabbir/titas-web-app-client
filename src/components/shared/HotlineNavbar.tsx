@@ -7,12 +7,16 @@ import LiveDate from "../ui/LiveDate";
 import { Link } from "react-router-dom";
 import Logout from "../../pages/Authentication/Logout";
 import { useUser } from "../../Context/useUser";
-
+import { motion } from "framer-motion";
 const HotlineNavbar = () => {
   const { state } = useUser();
 
   return (
-    <div className="bg-gray-900 text-white py-3 uppercase px-12 flex justify-between text-xs">
+    <motion.div
+      initial={{ y: -200 }}
+      animate={{ y: 0 }}
+      className="bg-gray-900 text-white py-3 uppercase px-12 flex justify-between text-xs"
+    >
       <div className="flex items-center gap-10">
         <ul className="flex items-center gap-5">
           <li>
@@ -51,7 +55,7 @@ const HotlineNavbar = () => {
           </>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
