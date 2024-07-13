@@ -16,6 +16,7 @@ interface EditProfileData {
   studentId: string;
   fullName: string;
   class: string;
+  bloodGroup: string;
   rollNumber: string;
   phoneNumber: string;
   age: string;
@@ -85,6 +86,7 @@ const EditProfileModal = () => {
     const finalData: EditProfileData = {
       studentId: studentId!,
       fullName: data.fullName,
+      bloodGroup: data.bloodGroup,
       class: data.class,
       rollNumber: data.rollNumber.toString(),
       phoneNumber: data.phoneNumber,
@@ -117,13 +119,13 @@ const EditProfileModal = () => {
       <Modal
         width={"100%"}
         title="Edit Your Profile"
-        visible={isModalOpen}
+        open={isModalOpen}
         onOk={handleSubmit(onSubmit)}
         onCancel={handleCancel}
       >
         <form>
-          <div className="flex gap-2">
-            <div className="flex w-1/2 my-2 flex-col gap-1">
+          <div className="md:flex gap-2">
+            <div className="flex md:w-1/2 my-2 flex-col gap-1">
               <label className="ms-1 font-semibold text-lg">Full Name:</label>
               <Controller
                 name="fullName"
@@ -142,7 +144,7 @@ const EditProfileModal = () => {
                 )}
               />
             </div>
-            <div className="flex w-1/2 my-2 flex-col gap-1">
+            <div className="flex md:w-1/2 my-2 flex-col gap-1">
               <label className="ms-1 font-semibold text-lg">Student Id:</label>
               <Controller
                 name="studentId"
@@ -162,8 +164,8 @@ const EditProfileModal = () => {
               />
             </div>
           </div>
-          <div className="flex gap-2 w-full">
-            <div className="flex w-1/3 my-2 flex-col gap-1">
+          <div className="md:flex gap-2 w-full">
+            <div className="flex md:w-1/3 my-2 flex-col gap-1">
               <label className="ms-1 font-semibold text-lg">Class:</label>
               <Controller
                 name="class"
@@ -193,7 +195,7 @@ const EditProfileModal = () => {
                 )}
               />
             </div>
-            <div className="flex w-1/3 my-2 flex-col gap-1">
+            <div className="flex md:w-1/3 my-2 flex-col gap-1">
               <label className="ms-1 font-semibold text-lg">Roll Number:</label>
               <Controller
                 name="rollNumber"
@@ -219,7 +221,7 @@ const EditProfileModal = () => {
                 )}
               />
             </div>
-            <div className="flex w-1/3 my-2 flex-col gap-1">
+            <div className="flex md:w-1/3 my-2 flex-col gap-1">
               <label className="ms-1 font-semibold text-lg">
                 Phone Number:
               </label>
@@ -241,8 +243,8 @@ const EditProfileModal = () => {
               />
             </div>
           </div>
-          <div className="flex gap-2 w-full">
-            <div className="flex w-1/3 my-2 flex-col gap-1">
+          <div className="md:flex gap-2 w-full">
+            <div className="flex md:w-1/3 my-2 flex-col gap-1">
               <label className="ms-1 font-semibold text-lg">Age:</label>
               <Controller
                 name="age"
@@ -261,7 +263,7 @@ const EditProfileModal = () => {
                 )}
               />
             </div>
-            <div className="flex w-1/3 my-2 flex-col gap-1">
+            <div className="flex md:w-1/3 my-2 flex-col gap-1">
               <label className="ms-1 font-semibold text-lg">Gender:</label>
               <Controller
                 name="gender"
@@ -283,7 +285,7 @@ const EditProfileModal = () => {
                 )}
               />
             </div>
-            <div className="flex w-1/3 my-2 flex-col gap-1">
+            <div className="flex md:w-1/3  my-2 flex-col gap-1">
               <label className="ms-1 font-semibold text-lg">
                 Date of Birth
               </label>
@@ -305,8 +307,8 @@ const EditProfileModal = () => {
               />
             </div>
           </div>
-          <div className="flex gap-1 w-full">
-            <div className="flex w-1/2 my-2 flex-col gap-1">
+          <div className="md:flex gap-1 w-full">
+            <div className="flex md:w-1/3 my-2 flex-col gap-1">
               <label className="ms-1 font-semibold text-lg">Email:</label>
               <Controller
                 name="email"
@@ -325,7 +327,29 @@ const EditProfileModal = () => {
                 )}
               />
             </div>
-            <div className="flex w-1/2 my-2 flex-col gap-1">
+            <div className="flex md:w-1/3 my-2 flex-col gap-1">
+              <label className="ms-1 font-semibold text-lg">Blood Group</label>
+              <Controller
+                name="bloodGroup"
+                control={control}
+                defaultValue={currentUser.bloodGroup}
+                rules={{ required: "Blood is important for your health!" }}
+                render={({ field }) => (
+                  <>
+                    <Select {...field} className="w-full">
+                      <Select.Option value="A+">A+</Select.Option>
+                      <Select.Option value="B+">B+</Select.Option>
+                    </Select>
+                    {errors.class && (
+                      <span className="text-red-500">
+                        {(errors.class as FieldError).message}
+                      </span>
+                    )}
+                  </>
+                )}
+              />
+            </div>
+            <div className="flex md:w-1/3 my-2 flex-col gap-1">
               <label className="ms-1 font-semibold text-lg">Address:</label>
               <Controller
                 name="address"

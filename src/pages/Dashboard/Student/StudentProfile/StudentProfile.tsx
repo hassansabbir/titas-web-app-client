@@ -73,19 +73,24 @@ const StudentProfile = () => {
       value: currentUser.rollNumber,
     },
     {
-      key: "7",
+      key: "8",
       field: "Age",
       value: currentUser.age,
     },
     {
-      key: "7",
+      key: "9",
       field: "Birth Date",
       value: currentUser.dateOfBirth,
     },
     {
-      key: "7",
-      field: "Roll Number",
+      key: "10",
+      field: "Gender",
       value: currentUser.gender,
+    },
+    {
+      key: "11",
+      field: "Blood Group",
+      value: currentUser.bloodGroup,
     },
   ];
 
@@ -117,8 +122,8 @@ const StudentProfile = () => {
         <img
           className="w-52 h-52 rounded-2xl object-cover"
           src={
-            currentUser.image
-              ? currentUser.image
+            currentUser?.image
+              ? currentUser?.image
               : "https://i.ibb.co/6JVJMvZ/blank-profile-picture.png"
           }
           alt="profile Image"
