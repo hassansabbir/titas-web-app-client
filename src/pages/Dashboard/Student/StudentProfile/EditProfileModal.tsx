@@ -338,7 +338,13 @@ const EditProfileModal = () => {
                   <>
                     <Select {...field} className="w-full">
                       <Select.Option value="A+">A+</Select.Option>
+                      <Select.Option value="A-">A-</Select.Option>
                       <Select.Option value="B+">B+</Select.Option>
+                      <Select.Option value="B-">B-</Select.Option>
+                      <Select.Option value="AB+">AB+</Select.Option>
+                      <Select.Option value="AB-">AB-</Select.Option>
+                      <Select.Option value="O+">O+</Select.Option>
+                      <Select.Option value="O-">O-</Select.Option>
                     </Select>
                     {errors.class && (
                       <span className="text-red-500">
