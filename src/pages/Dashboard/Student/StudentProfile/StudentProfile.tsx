@@ -1,14 +1,26 @@
-import { Progress, ProgressProps, Table, TableColumnsType } from "antd";
+import React, { useRef } from "react";
+import {
+  Progress,
+  ProgressProps,
+  Table,
+  TableColumnsType,
+  Tooltip,
+} from "antd";
 import { useUser } from "../../../../Context/useUser";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const StudentProfile = () => {
-  const { currentUser, loading, error } = useUser();
+  const { currentUser, loading, error, refetch } = useUser();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   if (!currentUser) return <div>No user data available</div>;
 
-  console.log(currentUser);
+  const handleImageClick = () => {
+    fileInputRef.current?.click();
+  };
 
   interface DataType {
     key: React.Key;
@@ -116,18 +128,81 @@ const StudentProfile = () => {
 
   const filteredGuardianData = guardianData.filter((item) => item.value);
 
+  const handleImageUpload = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+
+    if (!file) {
+      Swal.fire({
+        icon: "error",
+        title: "No image file selected for upload",
+      });
+      return;
+    }
+
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+      const imgResponse = await axios.post(
+        "https://api.imgbb.com/1/upload?key=bc0cdf94b03f16289e4ecc89abac5049",
+        formData
+      );
+
+      if (imgResponse.data.success) {
+        const photoUrl = imgResponse.data.data.display_url;
+        console.log(photoUrl);
+
+        // Update the image URL in the database
+        await axios.patch(`/api/update-userImage/${currentUser?.studentId}`, {
+          image: photoUrl,
+        });
+
+        Swal.fire({
+          icon: "success",
+          title: "Image uploaded successfully",
+        });
+        refetch();
+      }
+    } catch (err) {
+      console.log(err);
+      Swal.fire({
+        icon: "error",
+        title: "Image upload failed",
+      });
+    }
+  };
+
   return (
     <div className="font-displayOne">
       <div className="flex flex-col gap-5 items-center">
-        <img
-          className="w-52 h-52 rounded-2xl object-cover"
-          src={
-            currentUser?.image
-              ? currentUser?.image
-              : "https://i.ibb.co/6JVJMvZ/blank-profile-picture.png"
-          }
-          alt="profile Image"
-        />
+        <Tooltip
+          placement="right"
+          title="Students must upload a professional image wearing school uniform"
+        >
+          <div className="relative group" onClick={handleImageClick}>
+            <img
+              className="w-52 h-52 rounded-2xl object-cover"
+              src={
+                currentUser?.image
+                  ? currentUser?.image
+                  : "https://i.ibb.co/6JVJMvZ/blank-profile-picture.png"
+              }
+              alt="profile Image"
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 rounded-2xl cursor-pointer">
+              <span className="text-white text-lg font-semibold">
+                Upload Image
+              </span>
+            </div>
+            <input
+              type="file"
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              onChange={handleImageUpload}
+            />
+          </div>
+        </Tooltip>
         <div className="text-center">
           <h1 className="text-3xl font-semibold">{currentUser.fullName}</h1>
           <p className="font-semibold">
