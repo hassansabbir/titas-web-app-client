@@ -10,6 +10,9 @@ export type TUser = {
   address?: string | undefined;
   guardianDetails?: TGuardian | undefined;
   phoneNumber?: string | undefined;
+  age?: string | undefined;
+  gender?: string | undefined;
+  dateOfBirth?: string | undefined;
   fullName: string;
   class: string;
   rollNumber: string;
