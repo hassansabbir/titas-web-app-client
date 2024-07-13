@@ -6,6 +6,7 @@ export type TGuardian = {
 export type TUser = {
   studentId: string;
   image?: string | undefined;
+  bloodGroup?: string | undefined;
   email?: string | undefined;
   address?: string | undefined;
   guardianDetails?: TGuardian | undefined;
