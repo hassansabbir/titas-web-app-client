@@ -1,4 +1,4 @@
-import { Table, TableColumnsType } from "antd";
+import { Progress, ProgressProps, Table, TableColumnsType } from "antd";
 import { useUser } from "../../../../Context/useUser";
 
 const StudentProfile = () => {
@@ -15,6 +15,12 @@ const StudentProfile = () => {
     field: string;
     value: string | undefined;
   }
+
+  const conicColors: ProgressProps["strokeColor"] = {
+    "0%": "#FF0303",
+    "50%": "#FFE403",
+    "100%": "#00B419",
+  };
 
   const columns: TableColumnsType<DataType> = [
     {
@@ -65,6 +71,21 @@ const StudentProfile = () => {
       key: "7",
       field: "Roll Number",
       value: currentUser.rollNumber,
+    },
+    {
+      key: "7",
+      field: "Age",
+      value: currentUser.age,
+    },
+    {
+      key: "7",
+      field: "Birth Date",
+      value: currentUser.dateOfBirth,
+    },
+    {
+      key: "7",
+      field: "Roll Number",
+      value: currentUser.gender,
     },
   ];
 
@@ -134,6 +155,23 @@ const StudentProfile = () => {
             size="middle"
             pagination={false}
           />
+          <div className="mt-10">
+            <h1 className="text-2xl font-semibold text-center">
+              Attendance Parentage
+            </h1>
+            <div className="flex gap-3 flex-col items-center my-5">
+              <p>Attendance Before Half-Yearly Exam 2024:</p>
+              <Progress
+                type="dashboard"
+                percent={87}
+                strokeColor={conicColors}
+              />
+              <p>
+                <span className="font-semibold">Feedback:</span> Your Attendance
+                parentage is good.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

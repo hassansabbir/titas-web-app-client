@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import { UserState, UserAction, TUser } from "../types/UserTypes";
 import axios from "axios";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
 type ApiResponse<T> = {
   data: T;
@@ -18,48 +19,34 @@ export const useUser = () => {
   const { state, dispatch } = context;
   const userId = state.user?.studentId;
 
-  const [currentUser, setCurrentUser] = useState<TUser | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<any>(null);
-
-  useEffect(() => {
+  const fetchCurrentUser = async (): Promise<TUser> => {
     if (!userId) {
-      console.log("No user ID available");
-      return;
+      throw new Error("No user ID available");
     }
 
-    const fetchCurrentUser = async () => {
-      setLoading(true);
-      setError(null);
+    const response = await axios.get<ApiResponse<TUser>>(`/api/user/${userId}`);
+    return response.data.data;
+  };
 
-      try {
-        const response = await axios.get<ApiResponse<TUser>>(
-          `/api/user/${userId}`
-        );
-        setCurrentUser(response.data.data);
-        // console.log("User fetched successfully:", response.data.data);
-      } catch (err) {
-        setError(err);
-        // console.error("Error fetching user:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCurrentUser();
-  }, [userId]);
+  const { data, isLoading, error, refetch }: UseQueryResult<TUser, any> =
+    useQuery({
+      queryKey: ["currentUser"],
+      queryFn: fetchCurrentUser,
+    });
 
   return {
     state,
     dispatch,
-    currentUser,
-    loading,
+    currentUser: data,
+    loading: isLoading,
     error,
+    refetch,
   } as {
     state: UserState;
     dispatch: React.Dispatch<UserAction>;
     currentUser: TUser | null;
     loading: boolean;
     error: any;
+    refetch: () => void;
   };
 };
