@@ -1,6 +1,7 @@
 // import { cn } from "@/lib/utils";
 // import Marquee from "../marquee";
 
+import { Tooltip } from "antd";
 import cn from "../../../utils/cn";
 import Marquee from "./Marquee";
 
@@ -8,43 +9,43 @@ const reviews = [
   {
     name: "Mahmud Hasan Sabbir",
     batchNo: "2018",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
+    body: "Absolutely stunning! The attention to detail is remarkable. I'm thoroughly impressed with the quality and craftsmanship.",
     img: "https://i.ibb.co/RHMhk5h/20231219-085228.jpg",
   },
   {
     name: "Md Nahid Shikder",
     batchNo: "2018",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://i.ibb.co/6XWXfms/IMG-20180417-141409.jpg",
+    body: "Speechless! This exceeded all my expectations. Truly exceptional in every way.",
+    img: "https://i.ibb.co/mbVCy5K/242776259-180841560856895-4978111939269678625-n.jpg",
   },
   {
     name: "Nymur Rahman Tushar",
     batchNo: "2018",
-    body: "I'm at a loss for words. This is amazing. I love it.",
+    body: "Wow! This is beyond amazing. I can't get enough of it! The design and functionality are outstanding.",
     img: "https://i.ibb.co/n7NtyFW/285133397-1638982559792686-8959378980286529429-n.jpg",
   },
   {
-    name: "Jane",
-    batchNo: "@jane",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jane",
+    name: "Jahid Uddin Babu",
+    batchNo: "2018",
+    body: "Incredible! The craftsmanship is superb. I'm in awe of the attention to detail.",
+    img: "https://i.ibb.co/tBRZ7mH/IMG-20240622-224009-926.jpg",
   },
   {
-    name: "Jenny",
-    batchNo: "@jenny",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jenny",
+    name: "Sheikh Shariar Saif",
+    batchNo: "2018",
+    body: "Impressive! This is exactly what I was looking for. Love it for its functionality and sleek design.",
+    img: "https://i.ibb.co/HXWTyyW/Screenshot-2023-10-31-095802.png",
   },
   {
-    name: "James",
-    batchNo: "@james",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/james",
+    name: "Asif Iqbal Eresh",
+    batchNo: "2018",
+    body: "Fantastic! The quality is outstanding. Couldn't be happier with the performance and durability.",
+    img: "https://i.ibb.co/t4pdz0G/Whats-App-Image-2023-10-25-at-12-54-05-AM.jpg",
   },
 ];
 
 const firstRow = reviews.slice(0, reviews.length / 2);
-// const secondRow = reviews.slice(reviews.length / 2);
+const secondRow = reviews.slice(reviews.length / 2);
 
 const ReviewCard = ({
   img,
@@ -60,30 +61,34 @@ const ReviewCard = ({
   return (
     <figure
       className={cn(
-        "relative w-80 cursor-pointer divide-y-2 overflow-hidden rounded-xl border p-4",
+        "relative w-60 cursor-pointer divide-y-2 overflow-hidden rounded-xl border p-4",
         // light styles
         "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
         // dark styles
         "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
       )}
     >
-      <div className="md:flex flex-col items-center gap-2">
-        <img
-          className="rounded-2xl w-[300px] h-[350px] object-cover"
-          alt=""
-          src={img}
-        />
-        <div className="flex items-center flex-col">
-          <figcaption className="text-2xl font-medium dark:text-white">
-            {name}
-          </figcaption>
-          <p className="text-xl font-medium dark:text-white/40">
-            Batch: {batchNo}
-          </p>
+      <Tooltip title={body} placement="bottom">
+        <div className="md:flex flex-col items-center gap-2">
+          <img
+            className="rounded-2xl w-full h-[200px] object-cover"
+            alt=""
+            src={img}
+          />
+          <div className="flex items-center flex-col">
+            <figcaption className="text-lg font-medium dark:text-white">
+              {name}
+            </figcaption>
+            <p className="text-base font-medium dark:text-white/40">
+              Batch: {batchNo}
+            </p>
+          </div>
         </div>
-      </div>
 
-      <blockquote className="mt-4 text-lg">{body}</blockquote>
+        <blockquote className="mt-4 text-base text-center line-clamp-4 truncate">
+          {body}
+        </blockquote>
+      </Tooltip>
     </figure>
   );
 };
@@ -97,6 +102,11 @@ const AlumniMarquee = () => {
         </h1>
         <Marquee pauseOnHover className="[--duration:20s]">
           {firstRow.map((review, i) => (
+            <ReviewCard key={i} {...review} />
+          ))}
+        </Marquee>
+        <Marquee pauseOnHover className="[--duration:20s]">
+          {secondRow.map((review, i) => (
             <ReviewCard key={i} {...review} />
           ))}
         </Marquee>
