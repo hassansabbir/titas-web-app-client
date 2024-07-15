@@ -76,10 +76,10 @@ const ReviewCard = ({
             src={img}
           />
           <div className="flex items-center flex-col">
-            <figcaption className="text-lg font-medium dark:text-white">
+            <figcaption className="text-lg font-semibold  text-black">
               {name}
             </figcaption>
-            <p className="text-base font-medium dark:text-white/40">
+            <p className="text-base font-medium">
               Batch: {batchNo}
             </p>
           </div>
@@ -96,7 +96,7 @@ const ReviewCard = ({
 const AlumniMarquee = () => {
   return (
     <>
-      <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl">
+      <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl" id="alumni">
         <h1 className="text-4xl font-displayTwo font-bold text-center my-10">
           Some Honorable Alumni
         </h1>

@@ -28,7 +28,7 @@ const GallerySection: React.FC = () => {
 
   return (
     <>
-      <div className="font-displayThree text-center">
+      <div className="font-displayThree text-center " id="gallerySection">
         <div className="m-20">
           <Slide className="text-2xl bold">Gallery</Slide>
           <Fade className="font-displayTwo text-sm font-semibold">

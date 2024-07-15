@@ -9,7 +9,7 @@ import imageOne from "../../../assets/SliderImages/imageOne.jpg";
 import imageTwo from "../../../assets/SliderImages/imageTwo.jpg";
 import imageThree from "../../../assets/SliderImages/imageThree.jpg";
 import imageFour from "../../../assets/SliderImages/imageFour.jpg";
-import Button from "../../../components/ui/Button";
+// import Button from "../../../components/ui/Button";
 import PageWrapper from "../../../components/ui/PageWrapper";
 
 const Slider = () => {
@@ -38,7 +38,7 @@ const Slider = () => {
               </h1>
               <p className="md:text-2xl">Where Excellence Meets Education.</p>
               {/* <Button size="large">Read More</Button> */}
-              <Button href="/">Read More</Button>
+              {/*<Button href="/">Read More</Button>*/}
             </div>
           </div>
           <img src={imageOne} alt="" className="w-full" />
@@ -51,7 +51,7 @@ const Slider = () => {
                 <br /> Titas Gas Adarsha High School!
               </h1>
               <p className="md:text-2xl">Where Excellence Meets Education.</p>
-              <Button href="/">Read More</Button>
+              {/*<Button href="/">Read More</Button>*/}
             </div>
           </div>
           <img src={imageTwo} alt="" className="w-full" />
@@ -64,7 +64,7 @@ const Slider = () => {
                 <br /> Titas Gas Adarsha High School!
               </h1>
               <p className="md:text-2xl">Where Excellence Meets Education.</p>
-              <Button href="/">Read More</Button>
+              {/*<Button href="/">Read More</Button>*/}
             </div>
           </div>
           <img src={imageThree} alt="" className="w-full" />
@@ -77,7 +77,7 @@ const Slider = () => {
                 <br /> Titas Gas Adarsha High School!
               </h1>
               <p className="md:text-2xl">Where Excellence Meets Education.</p>
-              <Button href="/">Read More</Button>
+              {/*<Button href="/">Read More</Button>*/}
             </div>
           </div>
           <img src={imageFour} alt="" className="w-full" />
