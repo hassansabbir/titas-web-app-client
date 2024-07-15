@@ -8,6 +8,7 @@ import GallerySection from "../GallerySection/GallerySection";
 import { Helmet } from "react-helmet-async";
 import { motion, useScroll } from "framer-motion";
 import AlumniMarquee from "../AlumniMarquee/AlumniMarquee";
+import ButtonGroups from "../HomeScreenNavigation/ButtonGroups.tsx";
 
 const Home = () => {
   const { scrollYProgress } = useScroll();
@@ -22,16 +23,17 @@ const Home = () => {
         <title>TGAHS | Home</title>
       </Helmet>
       <Slider></Slider>
+      <ButtonGroups></ButtonGroups>
       <div className="px-3 md:px-0">
-        {" "}
         <AuthoritySection></AuthoritySection>
         <GreetingsSection />
-        <SubscriptionBox></SubscriptionBox>
         <LandingParallax />
         {/* <TabDescription /> */}
       </div>
       <GallerySection />
+
       <AlumniMarquee />
+      <SubscriptionBox></SubscriptionBox>
     </>
   );
 };
