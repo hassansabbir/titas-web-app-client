@@ -8,6 +8,8 @@ import {
   AccordionPanel,
 } from "../../../utils/accordion";
 import { Table, TableColumnsType, Tooltip } from "antd";
+import { getResults } from "../../../components/api/Result.api";
+import { useQuery } from "@tanstack/react-query";
 
 interface DataType {
   key: React.Key;
@@ -21,6 +23,7 @@ interface DataType {
   boardRank: number;
   nationalRank: number;
   districtRank: number;
+  exam: string;
 }
 
 const columns: TableColumnsType<DataType> = [
@@ -161,140 +164,16 @@ const columns: TableColumnsType<DataType> = [
   },
 ];
 
-const data: DataType[] = [
-  {
-    key: "1",
-    board: "Dhaka",
-    year: 2019,
-    appeared: 89,
-    passed: 89,
-    failed: 0,
-    aPlus: 15,
-    passRate: 100.0,
-    boardRank: 435,
-    nationalRank: 1778,
-    districtRank: 220,
-  },
-  {
-    key: "2",
-    board: "Dhaka",
-    year: 2018,
-    appeared: 82,
-    passed: 82,
-    failed: 0,
-    aPlus: 7,
-    passRate: 100.0,
-    boardRank: 409,
-    nationalRank: 1393,
-    districtRank: 171,
-  },
-  {
-    key: "3",
-    board: "Dhaka",
-    year: 2017,
-    appeared: 97,
-    passed: 97,
-    failed: 0,
-    aPlus: 55,
-    passRate: 100.0,
-    boardRank: 165,
-    nationalRank: 426,
-    districtRank: 85,
-  },
-  {
-    key: "4",
-    board: "Dhaka",
-    year: 2016,
-    appeared: 104,
-    passed: 104,
-    failed: 0,
-    aPlus: 57,
-    passRate: 100.0,
-    boardRank: 216,
-    nationalRank: 576,
-    districtRank: 96,
-  },
-  {
-    key: "5",
-    board: "Dhaka",
-    year: 2015,
-    appeared: 128,
-    passed: 128,
-    failed: 0,
-    aPlus: 50,
-    passRate: 100.0,
-    boardRank: 263,
-    nationalRank: 731,
-    districtRank: 119,
-  },
-  {
-    key: "6",
-    board: "Dhaka",
-    year: 2014,
-    appeared: 113,
-    passed: 113,
-    failed: 0,
-    aPlus: 48,
-    passRate: 100.0,
-    boardRank: 161,
-    nationalRank: 502,
-    districtRank: 91,
-  },
-  {
-    key: "7",
-    board: "Dhaka",
-    year: 2013,
-    appeared: 108,
-    passed: 108,
-    failed: 0,
-    aPlus: 30,
-    passRate: 100.0,
-    boardRank: 348,
-    nationalRank: 1000,
-    districtRank: 169,
-  },
-  {
-    key: "8",
-    board: "Dhaka",
-    year: 2012,
-    appeared: 93,
-    passed: 93,
-    failed: 0,
-    aPlus: 15,
-    passRate: 100.0,
-    boardRank: 250,
-    nationalRank: 643,
-    districtRank: 129,
-  },
-  {
-    key: "9",
-    board: "Dhaka",
-    year: 2011,
-    appeared: 78,
-    passed: 77,
-    failed: 1,
-    aPlus: 22,
-    passRate: 98.72,
-    boardRank: 126,
-    nationalRank: 325,
-    districtRank: 77,
-  },
-  {
-    key: "10",
-    board: "Dhaka",
-    year: 2010,
-    appeared: 76,
-    passed: 76,
-    failed: 0,
-    aPlus: 4,
-    passRate: 100.0,
-    boardRank: 245,
-    nationalRank: 571,
-    districtRank: 135,
-  },
-];
-
 const ResultsPage = () => {
+  const { data } = useQuery({
+    queryKey: ["results"],
+    queryFn: getResults,
+  });
+
+  const boardResults = data?.data?.data || [];
+  const jscResults = boardResults.filter((i: DataType) => i.exam === "jsc");
+  const sscResults = boardResults.filter((i: DataType) => i.exam === "ssc");
+
   return (
     <div className="font-displayOne">
       <Cover image={ParallaxBG} text="Results" />
@@ -320,7 +199,7 @@ const ResultsPage = () => {
                 <Table
                   className="font-displayOne"
                   columns={columns}
-                  dataSource={data}
+                  dataSource={jscResults}
                   scroll={{ y: 340 }}
                 />
               </AccordionPanel>
@@ -330,11 +209,12 @@ const ResultsPage = () => {
                 SSC - Secondary School Certificate
               </AccordionHeader>
               <AccordionPanel>
-                UI components promote consistency, efficiency, and scalability
-                in software development. They allow developers to reuse code,
-                maintain a consistent look and feel across an application, and
-                easily make updates or modifications without affecting the
-                entire system.
+                <Table
+                  className="font-displayOne"
+                  columns={columns}
+                  dataSource={sscResults}
+                  scroll={{ y: 340 }}
+                />
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
