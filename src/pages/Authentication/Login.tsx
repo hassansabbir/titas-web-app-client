@@ -43,9 +43,12 @@ const Login = () => {
   const onSubmit = async (data: FieldValues) => {
     console.log(data);
 
+    // Cant get inside this try function below.
     try {
-      const response = await axios.get(`/api/user/${data.student_id}`, data);
-      console.log(response.data);
+      const response = await axios.get(`/api/student/${data.student_id}`, data);
+
+      console.log(response?.data);
+
       if (data.password === response?.data?.data?.password) {
         console.log("Password matched");
 
@@ -59,6 +62,7 @@ const Login = () => {
         });
       }
     } catch (error) {
+      // Error coming from here.
       console.error("Error fetching user:", error);
     }
   };
