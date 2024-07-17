@@ -48,7 +48,7 @@ const EditProfileModal = () => {
   const { mutate } = useMutation<unknown, unknown, EditProfileData>({
     mutationFn: async (data: EditProfileData) => {
       const { data: response } = await axios.patch(
-        `/api/user/${studentId}`,
+        `/api/student/${studentId}`,
         data
       );
       return response;

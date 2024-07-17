@@ -17,14 +17,14 @@ export const useUser = () => {
   }
 
   const { state, dispatch } = context;
-  const userId = state.user?.studentId;
+  const studentId = state.user?.studentId;
 
   const fetchCurrentUser = async (): Promise<TUser> => {
-    if (!userId) {
-      throw new Error("No user ID available");
+    if (!studentId) {
+      throw new Error("No student ID available");
     }
 
-    const response = await axios.get<ApiResponse<TUser>>(`/api/user/${userId}`);
+    const response = await axios.get<ApiResponse<TUser>>(`/api/student/${studentId}`);
     return response.data.data;
   };
 

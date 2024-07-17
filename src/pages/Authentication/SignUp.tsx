@@ -25,7 +25,7 @@ const SignUp = () => {
 
   const { mutate } = useMutation({
     mutationFn: async (data: TUser) => {
-      const { data: response } = await axios.post("/api/users", data);
+      const { data: response } = await axios.post("/api/students", data);
       console.log(response);
       navigate("/login", { state: { from: location } });
       return response;
