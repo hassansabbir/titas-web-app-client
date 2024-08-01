@@ -154,7 +154,7 @@ const StudentProfile = () => {
         console.log(photoUrl);
 
         // Update the image URL in the database
-        await axios.patch(`/api/update-userImage/${currentUser?.studentId}`, {
+        await axios.patch(`/api/update-studentImg/${currentUser?.studentId}`, {
           image: photoUrl,
         });
 

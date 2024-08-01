@@ -30,12 +30,13 @@ const SignUp = () => {
       navigate("/login", { state: { from: location } });
       return response;
     },
-    onSuccess: () => {
+    onSuccess: (response) => {
       Swal.fire({
-        title: "Success",
-        text: "New Student Created Successfully! Now login.",
+        title: `StudentId: ${response?.data?.studentId}`,
+        text: "New Student Created Successfully! Please note this studentId which will need to login.",
         icon: "success",
-        confirmButtonText: "Done",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Okay",
       });
     },
     onError: (error) => {
@@ -55,7 +56,7 @@ const SignUp = () => {
 
     // Regex pattern for password validation (at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character)
     const passwordPattern =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
     if (!passwordPattern.test(data.password)) {
       // If password does not match the regex pattern
@@ -197,7 +198,7 @@ const SignUp = () => {
                     required: "Please input your password!",
                     pattern: {
                       value:
-                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
                       message:
                         "Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one digit, and one special character.",
                     },
