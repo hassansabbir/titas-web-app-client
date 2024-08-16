@@ -177,7 +177,7 @@ const ResultsPage = () => {
   return (
     <div className="font-displayOne">
       <Cover image={ParallaxBG} text="Results" />
-      <Container>
+      <Container className="px-8">
         <h1 className="text-3xl font-semibold text-center mt-10">
           Board Results of <br /> Titas Gas Adarsha High School
         </h1>

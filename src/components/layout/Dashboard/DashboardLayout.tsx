@@ -1,4 +1,4 @@
-import { Dropdown, Layout, MenuProps } from "antd";
+import { Dropdown, Layout, MenuProps, Tooltip } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
@@ -30,9 +30,11 @@ const DashboardLayout = () => {
           className="flex items-center justify-between text-white font-semibold lg:text-3xl md:text-2xl text-xl 
         "
         >
-          <button onClick={() => navigate(-1)}>
-            <FaArrowLeft className="size-6" />
-          </button>
+          <Tooltip placement="bottom" title="Home">
+            <button onClick={() => navigate("/")}>
+              <FaArrowLeft className="size-6" />
+            </button>
+          </Tooltip>
           <Link className="hover:text-blue-400" to={"/"}>
             T I T A S
           </Link>

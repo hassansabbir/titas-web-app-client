@@ -174,7 +174,7 @@ const StudentProfile = () => {
   };
 
   return (
-    <div className="font-displayOne">
+    <div className="font-displayOne relative">
       <div className="flex flex-col gap-5 items-center">
         <Tooltip
           placement="right"
@@ -254,6 +254,17 @@ const StudentProfile = () => {
           </div>
         </div>
       </div>
+      {!currentUser?.guardianDetails && (
+        <>
+          <div className=" absolute top-0 right-4 rotate-45 bg-red-300 w-10 h-10"></div>
+          <div className="absolute top-5 right-0 p-2 w-52 bg-red-300">
+            <h1 className="text-sm">
+              Please EDIT your profile data from here to complete registration
+              on this site.
+            </h1>
+          </div>
+        </>
+      )}
     </div>
   );
 };
