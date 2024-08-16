@@ -33,7 +33,7 @@ const SignUp = () => {
     onSuccess: (response) => {
       Swal.fire({
         title: `StudentId: ${response?.data?.studentId}`,
-        text: "New Student Created Successfully! Please note this studentId which will need to login.",
+        text: "New Student Created Successfully! Please note this studentId which will need to",
         icon: "success",
         confirmButtonColor: "#3085d6",
         confirmButtonText: "Okay",
