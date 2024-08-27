@@ -116,6 +116,9 @@ const EditProfileModal = () => {
   return (
     <>
       <p onClick={showModal}>Edit Profile</p>
+      <p className="text-center">
+        Please enter your full information correctly.
+      </p>
       <Modal
         width={"100%"}
         title="Edit Your Profile"
